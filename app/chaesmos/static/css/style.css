@@ -431,6 +431,8 @@ h6,
 .account-bar {
     float: left;
     display: flex;
-    justify-content: space-between;
-    width: 140px;
+}
+
+.account-bar a {
+    margin-right: 30px;
 }
