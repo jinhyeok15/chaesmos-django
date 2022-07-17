@@ -436,3 +436,12 @@ h6,
 .account-bar a {
     margin-right: 30px;
 }
+
+.login-row {
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    border: 1px solid;
+    width: 800px;
+    height: 600px;
+}
