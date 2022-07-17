@@ -16,6 +16,7 @@ def signup(request):
             return redirect('page-index')
     else:
         form = UserAccountSignUpForm()
+
     return render(request, 'signup.html', {'form': form})
 
 
@@ -27,4 +28,5 @@ def login(request):
             return redirect('page-index')
     else:
         form = UserAccountLoginForm()
+
     return render(request, 'login.html', {'form': form})

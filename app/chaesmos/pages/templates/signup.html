@@ -5,7 +5,7 @@
 <div class="signup-row">
     <div class="col-md-8 col-sm-10 col-12">
         <h2>회원가입</h2>
-        <form method="post"> {% csrf_token %}
+        <form method="post" id="user-signup"> {% csrf_token %}
             <table>
                 {{ form.as_table }}
                 <tr>

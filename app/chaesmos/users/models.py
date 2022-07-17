@@ -6,8 +6,12 @@ from commons.models import TimeStampedModel
 # managers
 from .managers import *
 
+# settings
+from chaesmos.settings import GENSALT_ROUND
+
 # python utils
 import uuid
+import bcrypt
 
 # Create your models here.
 
@@ -18,6 +22,10 @@ class UserAccount(TimeStampedModel):
     nickname = models.CharField(max_length=50)
 
     objects = UserAccountManager()
+
+    def save(self, *args, **kwargs):
+        self.password = bcrypt.hashpw(self.password.encode('utf-8'), bcrypt.gensalt(GENSALT_ROUND)).decode()
+        super().save(*args, **kwargs)
 
 
 class UserSession(models.Model):

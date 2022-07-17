@@ -130,3 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User session expired
 USER_SESSION_EXPIRATION_DAYS = 3
+
+# bcrypt gensalt round: default=12
+GENSALT_ROUND = 12

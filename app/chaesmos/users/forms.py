@@ -1,27 +1,23 @@
 from django import forms
 from .models import *
-from django.db.models import Q
+
+# exception
 from django.core.exceptions import ValidationError
 
 
 class UserAccountSignUpForm(forms.ModelForm):
     
-    password_again = forms.CharField()
+    username = forms.CharField(required=False)
+    password = forms.CharField(required=False)
+    password_again = forms.CharField(required=False)
+    validate = forms.ChoiceField()
 
     class Meta:
         model = UserAccount
         fields = ["username", "password", "nickname"]
-
-    def is_valid(self):
-        data = self.data
-        if self.is_existed(data.get('username'), data.get('nickname')):
-            return False
-        if data['password'] != data['password_again']:
-            return False
-        return True
     
     def clean_username(self):
-        username = self.cleaned_data.get('username')
+        username = self.data.get('username')
         user = UserAccount.objects.filter(username=username).first()
 
         if user is not None:
@@ -30,11 +26,22 @@ class UserAccountSignUpForm(forms.ModelForm):
         return username
     
     def clean_nickname(self):
-        nickname = self.cleaned_data.get('nickname')
+        nickname = self.data.get('nickname')
         user = UserAccount.objects.filter(nickname=nickname).first()
 
         if user is not None:
             raise ValidationError('이미 사용중인 닉네임입니다.')
+        
+        return nickname
+    
+    def clean_password(self):
+        password = self.data.get('password')
+        password_again = self.data.get('password_again')
+
+        if password != password_again:
+            raise ValidationError('비밀번호가 일치하지 않습니다.')
+        
+        return password
 
 
 class UserAccountLoginForm(forms.Form):
@@ -44,8 +51,7 @@ class UserAccountLoginForm(forms.Form):
     def save(self):
         data = self.data
         username = data.get('username')
-        password = data.get('password')
-        user = UserAccount.objects.filter(username=username, password=password).first()
+        user = UserAccount.objects.get(username=username)
 
         return UserSession.objects.create(fk_user_account=user)
     
@@ -53,7 +59,7 @@ class UserAccountLoginForm(forms.Form):
         data = self.data
         username = data.get('username')
         password = data.get('password')
-        user = UserAccount.objects.filter(username=username, password=password).first()
+        user = UserAccount.objects.login_user(username=username, password=password)
 
         if user is None:
             self.add_error(None, '아이디 혹은 비밀번호가 일치하지 않습니다.')
