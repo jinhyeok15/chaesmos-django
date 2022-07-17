@@ -9,7 +9,6 @@ def index(request):
 
 
 def signup(request):
-    form = AccountSignupForm()
     if request.method == 'POST':
         form = AccountSignupForm(request.POST)
         if form.is_valid():
@@ -17,4 +16,11 @@ def signup(request):
             return redirect('page-index')
         else:
             raise ValidationError("invalid signup form")
+    else:
+        form = AccountSignupForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def login(request):
+    form = AccountSignupForm()
+    return render(request, 'login.html', {'form': form})

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-row">
+    <div class="col-md-8 col-sm-10 col-12">
+        <h2>로그인</h2>
+        <form method="post"> {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" value="확인" class="btn btn-success"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}
