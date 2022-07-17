@@ -7,14 +7,14 @@ from django.core.exceptions import ValidationError
 
 class UserAccountSignUpForm(forms.ModelForm):
     
-    username = forms.CharField(required=False)
-    password = forms.CharField(required=False)
-    password_again = forms.CharField(required=False)
-    validate = forms.ChoiceField()
+    username = forms.CharField(label='아이디')
+    password = forms.CharField(label='비밀번호', widget=forms.PasswordInput)
+    password_again = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput)
+    nickname = forms.CharField(label='닉네임')
 
     class Meta:
         model = UserAccount
-        fields = ["username", "password", "nickname"]
+        fields = ["username", "password", "password_again", "nickname"]
     
     def clean_username(self):
         username = self.data.get('username')
@@ -45,8 +45,8 @@ class UserAccountSignUpForm(forms.ModelForm):
 
 
 class UserAccountLoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField()
+    username = forms.CharField(label='아이디')
+    password = forms.CharField(label='비밀번호', widget=forms.PasswordInput)
 
     def save(self):
         data = self.data

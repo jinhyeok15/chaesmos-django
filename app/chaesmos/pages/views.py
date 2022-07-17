@@ -17,7 +17,7 @@ def signup(request):
     else:
         form = UserAccountSignUpForm()
 
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'users/signup.html', {'form': form})
 
 
 def login(request):
@@ -29,4 +29,4 @@ def login(request):
     else:
         form = UserAccountLoginForm()
 
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'users/login.html', {'form': form})
