@@ -1,10 +1,30 @@
-{% extends 'users/base.html' %}
 {% load static %}
 
-{% block main_title %}
-신비한 우체국
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block sub_title %}
-회원가입
-{% endblock %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+  <title>신비한 우체국</title>
+</head>
+
+<body>
+  <div class="signup-row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h1>신비한 우체국</h1>
+      <form method="post"> {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" name="submit" value="회원가입하기" class="btn btn-success">
+      </form>
+    </div>
+  </div>
+  <a href="{% url 'page-index' %}"><button class="homebtn">HOME</button></a>
+  <img src="{% static 'img/background.jpg' %}" alt="">
+</body>
+
+</html>
