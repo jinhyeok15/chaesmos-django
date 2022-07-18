@@ -6,10 +6,13 @@ from django.core.exceptions import ValidationError
 # settings
 from chaesmos.settings import USER_SESSION_EXPIRATION_DAYS
 
+# django utils
+from django.utils import timezone
+
 # python utils
-from datetime import timedelta, datetime
+from datetime import timedelta
 import bcrypt
-from typing import Optional, Type
+from typing import Optional
 
 
 class UserAccountManager(Manager):
@@ -28,5 +31,5 @@ class UserSessionManager(Manager):
         """
         override objects.create()
         """
-        expired_at = datetime.now() + timedelta(days=USER_SESSION_EXPIRATION_DAYS)
+        expired_at = timezone.now() + timedelta(days=USER_SESSION_EXPIRATION_DAYS)
         return super().create(*args, expired_at=expired_at, **kwargs)

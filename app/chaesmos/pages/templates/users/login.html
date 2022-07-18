@@ -1,29 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'users/base.html' %}
 {% load static %}
 
-{% block content %}
-<div class="main-container">
-  <div class="title-slot">
-    <h1 class="text-ko">신비한 우체국</h1>
-    <h2 class="text-ko">여러분의 고민을 신비한 우체통에 넣어보세요</h2>
-  </div>
-  <div class="form-base">
-    <form method="post" id="user-login"> {% csrf_token %}
-      {% for field in form %}
-        {% if field.name != 'validate' %}
-        <div class="field-base">
-          <div>
-            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          </div>
-          {{ field }}
-          {{ field.errors }}
-        </div>
-        {% endif %}
-      {% endfor %}
-      <div class="field-base">
-        <input type="submit" name="submit" value="로그인" class="submit-btn">
-      </div>
-    </form>
-  </div>
-</div>
+{% block main_title %}
+신비한 우체국
+{% endblock %}
+
+{% block sub_title %}
+여러분의 고민을 신비한 우체통에 넣어보세요
 {% endblock %}
