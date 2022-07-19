@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: rgb(51, 41, 56);
+}
+.logo {
+  color: aliceblue;
+  font-size: 30px;
+  font-family: "UhBeeann";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeann.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.login,
+.signup {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+}
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+.contents {
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ml3 {
+  font-weight: 900;
+  font-size: 2.5em;
+  color: aliceblue;
+  text-align: center;
+}
+.btns {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.write,
+.answer {
+  color: black;
+  border-radius: 10px;
+  padding: 15px 25px;
+  margin: 30px;
+  font-size: 20px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: aliceblue;
+  box-shadow: 0 5px #999;
+}
+.write:active,
+.answer:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

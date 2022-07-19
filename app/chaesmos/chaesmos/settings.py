@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # local apps
-    'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
+    'users.apps.UsersConfig',
+    'commons.apps.CommonsConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,4 +128,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.Account'
+# User session expired
+USER_SESSION_EXPIRATION_DAYS = 3
+
+# bcrypt gensalt round: default=12
+GENSALT_ROUND = 12

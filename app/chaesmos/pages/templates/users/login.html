@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <title>신비한 우체국</title>
+  </head>
+
+  <body>
+    <div class="login">
+      <div class="container">
+        <h1>신비한 우체국</h1>
+        <h3>여러분의 고민을 신비한 우체통에 넣어보세요.</h3>
+        <form method="post"> {% csrf_token %}
+          {% for field in form %}
+          <div class="field">
+            <h2>{{ field.label }}</h2>
+            {{ field }}
+            {{ field.errors }}
+          </div>
+          {% endfor %}
+          {{ form.non_field_errors }}
+          <input type="submit" name="submit" value="로그인" class="loginbtn">
+        </form>
+        <div class="signin">
+          <h4>아이디가 없으신가요?</h4>
+          <a href="{% url 'page-signup' %}" class="signup">회원가입</a>
+        </div>
+      </div>
+    </div>
+    <a href="{% url 'page-index' %}"><button class="homebtn">HOME</button></a>
+    <img src="{% static 'img/background.jpg' %}" alt="">
+  </body>
+
+</html>
