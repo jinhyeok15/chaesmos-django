@@ -10,10 +10,12 @@
   <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   <link href="{% static 'css/index.css' %}" rel="stylesheet">
+  {% block style %}{% endblock style %}
   <title>신비한 우체국</title>
 </head>
 
 <body>
+  {% if view_name == 'page-index' %}
   <nav class="container">
     <h1 class="logo">신비한 우체국</h1>
     <div class="user">
@@ -21,9 +23,8 @@
       <a href="{% url 'page-signup' %}" class="signup">회원가입</a>
     </div>
   </nav>
-  <section class="contents">
-    <h1 class="ml3">당신의 고민을 적어서 신비한 우체국에 보내보세요.</h1>
-  </section>
+  {% endif %}
+  {% block content %}{% endblock content %}
   <footer class="btns">
     <a href="#" class="write">고민쓰기</a>
     <a href="#" class="answer">해결하기</a>

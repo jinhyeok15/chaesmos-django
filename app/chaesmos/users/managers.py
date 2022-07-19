@@ -1,7 +1,7 @@
 from django.db.models import Manager
 
 # django exception
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
 # settings
 from chaesmos.settings import USER_SESSION_EXPIRATION_DAYS
@@ -18,7 +18,10 @@ from typing import Optional
 class UserAccountManager(Manager):
     
     def login_user(self, username, password) -> Optional[object]:
-        user = self.get(username=username)
+        try:
+            user = self.get(username=username)
+        except ObjectDoesNotExist:
+            return None
         hashed = user.password.encode('utf-8')
         if bcrypt.checkpw(password.encode('utf-8'), hashed):
             return user
