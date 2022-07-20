@@ -7,11 +7,15 @@ from commons.models import TimeStampedModel
 from .managers import *
 
 # settings
-from chaesmos.settings import GENSALT_ROUND
+from chaesmos.settings import GENSALT_ROUND, USER_SESSION_EXPIRATION_DAYS
+
+# django utils
+from django.utils import timezone
 
 # python utils
 import uuid
 import bcrypt
+from datetime import timedelta
 
 # Create your models here.
 
@@ -23,9 +27,10 @@ class UserAccount(TimeStampedModel):
 
     objects = UserAccountManager()
 
-    def save(self, *args, **kwargs):
-        self.password = bcrypt.hashpw(self.password.encode('utf-8'), bcrypt.gensalt(GENSALT_ROUND)).decode()
-        super().save(*args, **kwargs)
+    def save(self, *args, password=None, **kwargs):
+        if password is not None:
+            self.password = bcrypt.hashpw(self.password.encode('utf-8'), bcrypt.gensalt(GENSALT_ROUND)).decode()
+        return super().save(*args, **kwargs)
 
 
 class UserSession(models.Model):
@@ -35,3 +40,7 @@ class UserSession(models.Model):
     expired_at = models.DateTimeField()
 
     objects = UserSessionManager()
+
+    def save(self, *args, **kwargs):
+        self.expired_at = timezone.now() + timedelta(days=USER_SESSION_EXPIRATION_DAYS)
+        return super().save(*args, **kwargs)

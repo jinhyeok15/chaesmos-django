@@ -1,5 +1,13 @@
 from django.shortcuts import render, redirect
+from django.db import transaction
+
+# models
+from users.models import UserSession
+
+# forms
 from users.forms import UserAccountSignUpForm, UserAccountLoginForm
+
+# exceptions
 from django.core.exceptions import ValidationError
 
 # Create your views here.
@@ -13,7 +21,10 @@ LOGIN_VIEW_NAME = 'page-login'
 def index(request):
     context = {'view_name': INDEX_VIEW_NAME}
     session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
-    print('-----------',session_id)
+    if session_id is None:
+        context['is_logined'] = False
+    context['is_logined'] = UserSession.objects.is_valid(session_id)
+
     return render(request, 'index.html', context)
 
 
@@ -21,8 +32,12 @@ def signup(request):
     if request.method == 'POST':
         form = UserAccountSignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('page-index')
+            with transaction.atomic():
+                user = form.save()
+                session = UserSession.objects.create(fk_user_account=user)
+                http = redirect(INDEX_VIEW_NAME)
+                http.set_cookie(USER_SESSION_COOKIE_KEY, session.id)
+                return http
     else:
         form = UserAccountSignUpForm()
 
@@ -38,7 +53,7 @@ def login(request):
         form = UserAccountLoginForm(request.POST)
         if form.is_valid():
             session = form.save()
-            http = redirect('page-index')
+            http = redirect(INDEX_VIEW_NAME)
             http.set_cookie(USER_SESSION_COOKIE_KEY, session.id)
 
             return http

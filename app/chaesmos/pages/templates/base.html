@@ -18,10 +18,16 @@
   {% if view_name == 'page-index' %}
   <nav class="container">
     <h1 class="logo">신비한 우체국</h1>
+    {% if not is_logined %}
     <div class="user">
-      <a href="{% url 'page-login' %}" class="login">로그인</a>
-      <a href="{% url 'page-signup' %}" class="signup">회원가입</a>
+      <a href="{% url 'page-login' %}" class="nav-right">로그인</a>
+      <a href="{% url 'page-signup' %}" class="nav-right">회원가입</a>
     </div>
+    {% else %}
+    <div class="user">
+      <a href="#" class="nav-right">내 메일함</a>
+    </div>
+    {% endif %}
   </nav>
   {% endif %}
   {% block content %}{% endblock content %}
