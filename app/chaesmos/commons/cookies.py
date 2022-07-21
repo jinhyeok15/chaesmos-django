@@ -1,0 +1,1 @@
+USER_SESSION_COOKIE_KEY = 'user_session_id'

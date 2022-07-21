@@ -55,6 +55,8 @@ class UserSessionManager(Manager):
         obj = self.get_or_none(id)
         if obj is None:
             return False
+        if obj.expired_at is None:
+            return False
         if obj.expired_at < timezone.now():
             return False
         return True

@@ -19,23 +19,25 @@
   <nav class="container">
     <h1 class="logo">신비한 우체국</h1>
     {% if not is_logined %}
-    <div class="user">
+    <div>
       <a href="{% url 'page-login' %}" class="nav-right">로그인</a>
       <a href="{% url 'page-signup' %}" class="nav-right">회원가입</a>
     </div>
     {% else %}
-    <div class="user">
-      <a href="#" class="nav-right">내 메일함</a>
+    <div>
+      <a href="" class="nav-right">내 메일함</a>
+      <a href="" id="logout-nav-button" class="nav-right">로그아웃</a>
     </div>
     {% endif %}
   </nav>
   {% endif %}
   {% block content %}{% endblock content %}
   <footer class="btns">
-    <a href="#" class="write">고민쓰기</a>
-    <a href="#" class="answer">해결하기</a>
+    <a href="" class="write">고민쓰기</a>
+    <a href="" class="answer">해결하기</a>
   </footer>
   <img src="{% static 'img/background.jpg' %}" alt="">
+  <script type="module" src="{% static 'js/main.js' %}"></script>
   <script>
     document.addEventListener( 'DOMContentLoaded', () => {
       new TypeIt( '.logo' )

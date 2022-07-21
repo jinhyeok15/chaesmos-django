@@ -10,17 +10,21 @@ from users.forms import UserAccountSignUpForm, UserAccountLoginForm
 # exceptions
 from django.core.exceptions import ValidationError
 
+# cookie
+from commons.cookies import USER_SESSION_COOKIE_KEY
+from commons.views import (
+    INDEX_VIEW_NAME,
+    LOGIN_VIEW_NAME,
+    SIGNUP_VIEW_NAME,
+)
+
 # Create your views here.
 
-USER_SESSION_COOKIE_KEY = 'user_session_id'
-
-INDEX_VIEW_NAME = 'page-index'
-SIGNUP_VIEW_NAME = 'page-signup'
-LOGIN_VIEW_NAME = 'page-login'
 
 def index(request):
     context = {'view_name': INDEX_VIEW_NAME}
     session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
+
     if session_id is None:
         context['is_logined'] = False
     context['is_logined'] = UserSession.objects.is_valid(session_id)

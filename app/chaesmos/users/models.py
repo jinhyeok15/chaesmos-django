@@ -37,10 +37,14 @@ class UserSession(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fk_user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    expired_at = models.DateTimeField()
+    expired_at = models.DateTimeField(null=True)
 
     objects = UserSessionManager()
 
-    def save(self, *args, **kwargs):
+    def refresh(self):
         self.expired_at = timezone.now() + timedelta(days=USER_SESSION_EXPIRATION_DAYS)
-        return super().save(*args, **kwargs)
+        super().save()
+    
+    def down(self):
+        self.expired_at = None
+        super().save()

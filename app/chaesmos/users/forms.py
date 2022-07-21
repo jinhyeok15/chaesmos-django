@@ -54,7 +54,7 @@ class UserAccountLoginForm(forms.Form):
         user = UserAccount.objects.get(username=username)
         session = UserSession.objects.get(fk_user_account=user)
         
-        session.save()
+        session.refresh()
         return session
     
     def is_valid(self):
