@@ -27,9 +27,8 @@ class UserAccount(TimeStampedModel):
 
     objects = UserAccountManager()
 
-    def save(self, *args, password=None, **kwargs):
-        if password is not None:
-            self.password = bcrypt.hashpw(self.password.encode('utf-8'), bcrypt.gensalt(GENSALT_ROUND)).decode()
+    def save(self, *args, **kwargs):
+        self.password = bcrypt.hashpw(self.password.encode('utf-8'), bcrypt.gensalt(GENSALT_ROUND)).decode()
         return super().save(*args, **kwargs)
 
 

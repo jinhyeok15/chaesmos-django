@@ -16,6 +16,7 @@ from commons.views import (
     INDEX_VIEW_NAME,
     LOGIN_VIEW_NAME,
     SIGNUP_VIEW_NAME,
+    LOGOUT_VIEW_NAME,
 )
 
 # Create your views here.
@@ -69,3 +70,10 @@ def login(request):
         'submit_value': '로그인',
         'view_name': LOGIN_VIEW_NAME,
     })
+
+
+def logout(request):
+    http = redirect(INDEX_VIEW_NAME)
+    http.delete_cookie(USER_SESSION_COOKIE_KEY)
+
+    return http
