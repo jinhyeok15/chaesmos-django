@@ -12,6 +12,8 @@ from django.core.exceptions import ValidationError
 
 # cookie
 from commons.cookies import USER_SESSION_COOKIE_KEY
+
+# view names
 from commons.views import (
     INDEX_VIEW_NAME,
     LOGIN_VIEW_NAME,
