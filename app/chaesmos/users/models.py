@@ -7,7 +7,7 @@ from commons.models import TimeStampedModel
 from .managers import *
 
 # settings
-from chaesmos.settings import GENSALT_ROUND, USER_SESSION_EXPIRATION_DAYS
+from chaesmos.settings import GENSALT_ROUND
 
 # django utils
 from django.utils import timezone
@@ -39,11 +39,3 @@ class UserSession(models.Model):
     expired_at = models.DateTimeField(null=True)
 
     objects = UserSessionManager()
-
-    def refresh(self):
-        self.expired_at = timezone.now() + timedelta(days=USER_SESSION_EXPIRATION_DAYS)
-        super().save()
-    
-    def down(self):
-        self.expired_at = None
-        super().save()

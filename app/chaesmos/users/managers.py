@@ -4,7 +4,7 @@ from django.db.models import Manager
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
 # settings
-from chaesmos.settings import USER_SESSION_EXPIRATION_DAYS, GENSALT_ROUND
+from chaesmos.settings import USER_SESSION_EXPIRATION_DAYS
 
 # django utils
 from django.utils import timezone
@@ -35,7 +35,7 @@ class UserAccountManager(Manager):
 
 class UserSessionManager(Manager):
 
-    def create(self, *args, expired_at=None, **kwargs):
+    def create(self, *args, **kwargs):
         """
         override objects.create()
         """

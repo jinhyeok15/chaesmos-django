@@ -26,7 +26,9 @@
     {% else %}
     <div>
       <a href="" class="nav-right">내 메일함</a>
-      <a href="{% url 'page-logout' %}" id="logout-nav-button" class="nav-right">로그아웃</a>
+      <button id="logout-nav-button" class="logout-btn">
+        <span class="nav-right">로그아웃</span>
+      </button>
     </div>
     {% endif %}
   </nav>
