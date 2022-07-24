@@ -8,4 +8,9 @@
 * api의 경우에만 app별로 urls.py를 include해서 사용하는 대신, config폴더의 apps.py에서 관리하도록 변경
     - api의 uri를 한번에 모아서 관리하기 위함. => api는 uri의 변경사항이 많을 것으로 예상하였기 때문
 
-* letter 관련 test case 작성하기
+# 7.24
+
+feat(postoffice.models, postoffice.forms): postoffice models, forms 설계
+test(postoffice.tests): tag 부분 test 설계
+
+* Authorize decorator로 유저 id 가져오기
