@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
     'commons.apps.CommonsConfig',
+    'postoffice.apps.PostofficeConfig',
 ]
 
 MIDDLEWARE = [
