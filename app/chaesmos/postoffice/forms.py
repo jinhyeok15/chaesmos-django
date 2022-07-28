@@ -22,10 +22,10 @@ class TagForm(forms.Form):
         ]
     
     def save(self):
-        splited = self.data.get('tags').split(' ')
+        splited = self.data.get('tags', []).split(' ')
         letter_id = self.data.get('letter')
 
-        return Tag.objects.bulk_create(Tag(name=t, fk_letter=letter_id) for t in splited)
+        return Tag.objects.bulk_create([Tag(name=t, fk_letter=letter_id) for t in splited])
     
     def is_valid(self):
         letter_id = self.data.get('letter')
