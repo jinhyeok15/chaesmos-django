@@ -6,5 +6,5 @@ LOGIN_VIEW_NAME = 'page-login'
 LOGOUT_VIEW_NAME = 'page-logout'
 
 # postoffice
-LETTER_VIEW_NAME = 'page-letter'
+WRITE_VIEW_NAME = 'page-write'
 COMMENT_VIEW_NAME = 'page-comment'
