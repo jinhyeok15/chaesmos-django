@@ -40,19 +40,19 @@
     </div>
     <div class="scroll"></div>
   </div>
-  <div class="text reveal">
+  <form method="POST" class="text reveal"> {% csrf_token %}
     <div class="container">
-      <input class="title-input" type="text" placeholder="제목">
-      <textarea class="text-textarea" placeholder="고민이 무엇인가요?" cols="10" rows="10"></textarea>
+      {{ form.title }}
+      {{ form.main }}
     </div>
     <div class="last-send">
       <div class="date">
         <label for="choose">날짜:</label>
-        <input type="date" id="choose">
+        {{ form.selected_date }}
       </div>
-      <button class="send">보내기</button>
+      <input type="submit" name="submit" class="send" value="보내기"></input>
     </div>
-  </div>
+  </form>
   <script>
     const textWrapper = document.querySelector('.m14');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter1'>$&</span>");

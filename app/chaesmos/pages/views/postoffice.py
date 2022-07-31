@@ -10,7 +10,7 @@ from users.models import UserAccount, UserSession
 from postoffice.forms import LetterCreateForm
 
 # commons
-from commons.views import WRITE_VIEW_NAME, COMMENT_VIEW_NAME
+from commons.views import WRITE_VIEW_NAME, COMMENT_VIEW_NAME, INDEX_VIEW_NAME
 
 # cookies
 from commons.cookies import USER_SESSION_COOKIE_KEY
@@ -26,14 +26,17 @@ def write(request):
     
     if request.method == 'POST':
         session = UserSession.objects.get(pk=session_id)
-        user = session.fk_account_user
-
+        user = session.fk_user_account
         form = LetterCreateForm({
-            **request.POST,
-            'fk_writer': user
+            'title': request.POST.get('title'),
+            'main': request.POST.get('main'),
+            'selected_date': request.POST.get('selected_date'),
+            'fk_writer': user.id,
         })
         if form.is_valid():
             form.save()
+
+        return redirect(INDEX_VIEW_NAME)
     else:
         form = LetterCreateForm()
     context['form'] = form

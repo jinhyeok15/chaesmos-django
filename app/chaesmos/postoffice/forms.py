@@ -3,6 +3,22 @@ from .models import *
 
 
 class LetterCreateForm(forms.ModelForm):
+    title = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'title-input',
+        'placeholder': '제목'
+    }))
+    main = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'text-textarea',
+        'placeholder': '고민이 무엇인가요?',
+        'cols': '10',
+        'rows': '10'
+    }))
+    selected_date = forms.DateField(label="날짜:", widget=forms.DateInput(
+        attrs={
+            'type': 'date',
+            'id': 'choose',
+        }
+    ))
 
     class Meta:
         model = Letter
