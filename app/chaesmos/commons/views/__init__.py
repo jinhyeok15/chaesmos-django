@@ -7,4 +7,4 @@ LOGOUT_VIEW_NAME = 'page-logout'
 
 # postoffice
 WRITE_VIEW_NAME = 'page-write'
-COMMENT_VIEW_NAME = 'page-comment'
+SOLVE_VIEW_NAME = 'page-solve'

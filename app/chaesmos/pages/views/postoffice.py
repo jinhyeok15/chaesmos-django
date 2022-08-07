@@ -10,7 +10,7 @@ from users.models import UserAccount, UserSession
 from postoffice.forms import LetterCreateForm
 
 # commons
-from commons.views import WRITE_VIEW_NAME, COMMENT_VIEW_NAME, INDEX_VIEW_NAME
+from commons.views import WRITE_VIEW_NAME, SOLVE_VIEW_NAME, INDEX_VIEW_NAME
 
 # cookies
 from commons.cookies import USER_SESSION_COOKIE_KEY
@@ -42,5 +42,5 @@ def write(request):
     context['form'] = form
     return render(request, 'postoffice/write.html', context=context)
 
-def comment(request):
-    return
+def solve(request):
+    return render(request, 'postoffice/solve-home.html')

@@ -21,40 +21,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-.logo {
-  color: aliceblue;
-  font-size: 50px;
-  font-weight: bold;
-}
-.nav-right {
-  color: aliceblue;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px;
-  font-size: 30px;
-}
-.nav-right:hover {
-  text-decoration: underline;
-}
-.logout-btn {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-}
 img {
   position: absolute;
   top: 0;
@@ -66,9 +32,7 @@ img {
   background-attachment: fixed;
 }
 .contents {
-  position: relative;
   width: 100%;
-  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,8 +56,7 @@ img {
   align-items: center;
   /* margin-top: 200px; */
 }
-.write,
-.answer {
+.index-link-button {
   color: black;
   border-radius: 10px;
   padding: 15px 50px;

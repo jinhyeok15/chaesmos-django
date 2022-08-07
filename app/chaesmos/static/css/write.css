@@ -215,3 +215,9 @@ label {
     cursor: pointer;
     outline: inherit;
 }
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

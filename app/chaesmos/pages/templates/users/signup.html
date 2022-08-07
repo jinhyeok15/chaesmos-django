@@ -12,11 +12,11 @@
 </head>
 
 <body>
-  <div class="signup-row">
-    <div class="col-md-8 col-sm-10 col-12">
+  <div class="signup-layout">
+    <div class="signup-form-container">
       <h1>신비한 우체국</h1>
       <form method="post"> {% csrf_token %}
-        <div class="input-item">
+        <div class="form-box">
           {% for field in form %}
             <div class="field">
               <span><b>{{ field.label }}</b></span>

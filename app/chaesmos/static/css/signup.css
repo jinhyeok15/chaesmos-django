@@ -14,17 +14,20 @@ body {
   width: 100vw;
   height: 100vh;
 }
-body {
+.signup-layout {
   display: flex;
   justify-content: center;
+  color: aliceblue;
   align-items: center;
 }
-.signup-row {
+.signup-form-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: aliceblue;
-  width: 80%;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.signup-form-container h1 {
+  font-size: 84px;
+  margin-bottom: auto;
 }
 img {
   position: absolute;
@@ -39,7 +42,6 @@ h1 {
 }
 form {
   text-align: center;
-  padding: 10px;
 }
 .btn {
   width: 200px;
@@ -47,7 +49,7 @@ form {
   border: none;
   border-radius: 10px;
   font-weight: bold;
-  margin: 30px;
+  margin-top: 36px;
   box-shadow: 0 5px #999;
   cursor: pointer;
 }
@@ -77,13 +79,11 @@ form {
 }
 
 .field {
-  position: relative;
-  left: 100px;
   height: 50px;
-  width: 37.5rem;
+  width: 100%;
   display: flex;
-  /* justify-content: flex-start; */
   align-items: center;
+  font-size: 28px;
 }
 
 .field span {
@@ -96,12 +96,5 @@ input {
   border-radius: 5px;
   padding: 5px;
   font-size: 20px;
-}
-
-.input-item {
-  position: relative;
-  /* display: flex;
-  justify-content: flex-start;
-  flex-direction: column; */
-  width: 100%;
+  width: 200px;
 }

@@ -2,13 +2,17 @@
 
 {% load static %}
 
+{% block style %}
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <section class="contents">
   <h1 class="ml3">당신의 고민을 적어서 신비한 우체국에 보내보세요.</h1>
 </section>
 
 <div class="btns">
-  <a href="{% url 'page-write' %}" class="write">고민쓰기</a>
-  <a href="" class="answer">해결하기</a>
+  <a href="{% url 'page-write' %}" class="index-link-button">고민쓰기</a>
+  <a href="{% url 'page-solve' %}" class="index-link-button">해결하기</a>
 </div>
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link href="{% static 'css/solve.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center">
+  <div class="flex flex-col items-center text-white-base z-20 fadein">
+    <h1 class="text-6xl py-3">미래, 혹은 과거로부터 온 고민들을 여러분이 직접 해결해주세요.</h1>
+    <h3 class="text-5xl py-2">우체통을 눌러 편지지를 확인해보세요.</h3>
+  </div>
+  <div class="flex justify-center post-img z-10">
+    <img src="{% static 'img/post.png' %}" alt="post">
+  </div>
+</div>
+{% endblock %}
