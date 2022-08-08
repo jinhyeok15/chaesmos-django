@@ -15,6 +15,7 @@
 .fadein {
   -webkit-animation: fadein 3s;
 }
+
 @-webkit-keyframes fadein { /* Safari and Chrome */
   from {
       opacity: 0;
@@ -44,6 +45,10 @@
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 /* align-items */
 .items-center {
   align-items: center;
@@ -52,6 +57,10 @@
 /* justify-contents */
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 /* flex-direction */
@@ -81,6 +90,19 @@
 
 .z-10 {
   z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.z-99 {
+  z-index: 289;
+}
+
+/* opacity */
+.opacity-10 {
+  opacity: 0.1;
 }
 
 /* nav */

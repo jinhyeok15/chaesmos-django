@@ -43,4 +43,11 @@ def write(request):
     return render(request, 'postoffice/write.html', context=context)
 
 def solve(request):
-    return render(request, 'postoffice/solve-home.html')
+    context = {'view_name': SOLVE_VIEW_NAME}
+    session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
+
+    if session_id is None:
+        context['is_logined'] = False
+    context['is_logined'] = UserSession.objects.is_valid(session_id)
+    
+    return render(request, 'postoffice/solve-home.html', context=context)

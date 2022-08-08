@@ -6,13 +6,59 @@ body {
   background-size: cover;
 }
 
-.post-img {
-  height: fit-content;
+.background-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: aliceblue;
+  opacity: 0.3;
+}
+
+.postoffice-mailbox {
   position: absolute;
   top: 80px;
 }
 
-.post-img img {
+.postoffice-mailbox img {
   width: 1080px;
   height: 600px;
+}
+
+.postoffice-mailbox button {
+  position: absolute;
+  top: 200px;
+  width: 150px;
+  height: 350px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 50;
+}
+
+.sol-paper div img {
+  width: 450px;
+  height: 600px;
+}
+
+.sol-paper-left {
+  width: fit-content;
+  height: fit-content;
+  background: transparent;
+  transform: rotate(-12deg);
+}
+
+.sol-paper-right {
+  width: fit-content;
+  height: fit-content;
+  background: transparent;
+  transform: rotate(12deg);
+}
+
+.sol-paper {
+  position: absolute;
+  top: 50px;
+  left: 17.5%;
+  width: 65%;
 }
