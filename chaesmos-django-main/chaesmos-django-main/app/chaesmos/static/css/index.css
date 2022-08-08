@@ -1,0 +1,152 @@
+@font-face {
+  font-family: 'UhBeeann';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeann.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'UhBeeann';
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-image: url(../img/index_bg.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.logo {
+  color: aliceblue;
+  font-size: 50px;
+  font-weight: bold;
+}
+.nav-right {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 30px;
+}
+.nav-right:hover {
+  text-decoration: underline;
+}
+.logout-btn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: auto;
+  filter: brightness(60%);
+  background-attachment: fixed;
+}
+.contents {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+  z-index: 0;
+}
+.ml3 {
+  font-weight: 900;
+  font-size: 2.5em;
+  color: aliceblue;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.btns {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 200px; */
+}
+.write,
+.answer {
+  color: black;
+  border-radius: 10px;
+  padding: 15px 50px;
+  margin: 70px;
+  font-size: 30px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: aliceblue;
+  box-shadow: 0 5px #999;
+}
+.write:active,
+.answer:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+a {
+  text-decoration: none;
+}
+@media screen and (max-width: 1300px) {
+  .contents {
+    height: 300px;
+  }
+  .btns {
+    margin-top: 100px;
+  }
+  .write,
+  .answer {
+    font-size: 20px;
+    padding: 10px 35px;
+    margin: 50px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .contents {
+    height: 200px;
+  }
+  .btns {
+    margin-top: 50px;
+  }
+  .write,
+  .answer {
+    font-size: 20px;
+    padding: 5px 20px;
+    margin: 30px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .contents {
+    height: 100px;
+  }
+  .btns {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/success.css' %}" rel="stylesheet">
+    <title>신비한 우체국</title>
+</head>
+
+<body>
+    <nav id="scroll" class="container">
+        <a href="{% url 'page-index' %}">
+            <h1 class="logo">신비한 우체국</h1>
+        </a>
+        {% if not is_logined %}
+        <div class="user">
+            <a href="{% url 'page-login' %}" class="nav-right">로그인</a>
+            <a href="{% url 'page-signup' %}" class="nav-right">회원가입</a>
+        </div>
+        {% else %}
+        <div class="user">
+            <a href="" class="nav-right">내 메일함</a>
+            <button id="logout-nav-button" class="logout-btn">
+                <span class="nav-right">로그아웃</span>
+            </button>
+        </div>
+        {% endif %}
+    </nav>
+    <div class="cmt">
+        <h1 class="comment">소중한 고민이 잘 보내졌습니다</h1>
+    </div>
+</body>
+
+</html>

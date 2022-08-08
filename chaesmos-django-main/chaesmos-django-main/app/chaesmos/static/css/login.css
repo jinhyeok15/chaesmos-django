@@ -1,0 +1,126 @@
+@font-face {
+  font-family: 'UhBeeann';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeann.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'UhBeeann';
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.container {
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  font-size: 100px;
+}
+h2 {
+  /* padding: 8px 10px; */
+  font-size: 30px;
+}
+h3 {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+h4 {
+  margin-right: 10px;
+  font-size: 20px;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: aliceblue;
+}
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+img .blick {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.homebtn {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px #999;
+  font-size: 15px;
+}
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+}
+input {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 25px;
+}
+.loginbtn {
+  margin: 20px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px #999;
+}
+.loginbtn:active,
+.homebtn:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup {
+  text-decoration: none;
+  color: aliceblue;
+}
+.signup:hover {
+  text-decoration: underline;
+}
+
+.errorlist {
+  position: relative;
+  top: 8px;
+  list-style: none;
+  font-size: 12px;
+  color: red;
+}

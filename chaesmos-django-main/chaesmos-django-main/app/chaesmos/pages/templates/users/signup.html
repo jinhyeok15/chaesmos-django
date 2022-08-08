@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+  <title>신비한 우체국</title>
+</head>
+
+<body>
+  <div class="signup-row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h1>신비한 우체국</h1>
+      <form method="post"> {% csrf_token %}
+        <div class="input-item">
+          {% for field in form %}
+          <div class="field">
+            <span><b>{{ field.label }}</b></span>
+            {{ field }}
+            {{ field.errors }}
+          </div>
+          {% endfor %}
+        </div>
+        <input type="submit" name="submit" value="회원가입하기" class="btn btn-success">
+      </form>
+    </div>
+  </div>
+  <a href="{% url 'page-index' %}"><button class="homebtn">홈으로</button></a>
+  <img src="{% static 'img/background.jpg' %}" alt="">
+  <img src="{% static 'img/blick.png' %}" alt="" class="blick">
+</body>
+
+</html>

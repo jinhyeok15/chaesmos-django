@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'UhBeeann';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeann.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: 'UhBeeann';
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  width: 80%;
+}
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+img .blick {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+h1 {
+  text-align: center;
+  font-size: 100px;
+  margin: 0;
+  padding: 0;
+}
+form {
+  text-align: center;
+  padding: 10px;
+}
+.btn {
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 30px;
+  box-shadow: 0 5px #999;
+  cursor: pointer;
+}
+.homebtn {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px #999;
+}
+.btn:active,
+.homebtn:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.errorlist {
+  position: relative;
+  list-style: none;
+  font-size: 12px;
+  color: red;
+}
+
+.field {
+  position: relative;
+  left: 100px;
+  height: 50px;
+  width: 37.5rem;
+  display: flex;
+  font-size: 30px;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+
+.field span {
+  position: relative;
+  width: 170px;
+}
+
+input {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.input-item {
+  position: relative;
+  /* display: flex;
+  justify-content: flex-start;
+  flex-direction: column; */
+  width: 100%;
+}

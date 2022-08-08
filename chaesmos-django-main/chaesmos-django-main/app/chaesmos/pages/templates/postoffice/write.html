@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+  <link href="{% static 'css/write.css' %}" rel="stylesheet">
+  <script type="module" src="{% static 'js/main.js' %}"></script>
+  {% block style %}{% endblock style %}
+  <title>신비한 우체국</title>
+</head>
+
+<body>
+  <nav id="scroll" class="container1">
+    <a href="{% url 'page-index' %}">
+      <h1 class="logo">신비한 우체국</h1>
+    </a>
+    {% if not is_logined %}
+    <div class="user">
+      <a href="{% url 'page-login' %}" class="nav-right">로그인</a>
+      <a href="{% url 'page-signup' %}" class="nav-right">회원가입</a>
+    </div>
+    {% else %}
+    <div class="user">
+      <a href="" class="nav-right">내 메일함</a>
+      <button id="logout-nav-button" class="logout-btn">
+        <span class="nav-right">로그아웃</span>
+      </button>
+    </div>
+    {% endif %}
+  </nav>
+  <div class="info">
+    <div class="description">
+      <h1 class="text1">당신의 고민을 적어 신비한 우체통에 넣어주세요</h1>
+      <h4 class="text2">과거, 혹은 미래로부터 당신의 고민을 해결해주는 편지지가 우체통 너머 도착할 거랍니다</h4>
+    </div>
+    <div class="scroll"></div>
+  </div>
+  <form method="POST" class="text reveal"> {% csrf_token %}
+    <div class="container">
+      {{ form.title }}
+      {{ form.main }}
+    </div>
+    <div class="last-send">
+      <div class="date">
+        <label for="choose">날짜:</label>
+        {{ form.selected_date }}
+      </div>
+      <a href="{% url 'page-success' %}">
+        <input type="submit" name="submit" class="send" value="보내기" />
+      </a>
+    </div>
+  </form>
+  <script>
+    const textWrapper = document.querySelector( '.m14' );
+    textWrapper.innerHTML = textWrapper.textContent.replace( /\S/g, "<span class='letter1'>$&</span>" );
+
+    anime.timeline( { loop: true } )
+      .add( {
+        targets: '.ml4 .letter1',
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        duration: 5250,
+        delay: ( el, i ) => 150 * ( i + 1 )
+      } )
+      .add( {
+        targets: '.ml4',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      } )
+  </script>
+  <script>
+    function reveal() {
+      let reveal = document.querySelector( ".reveal" );
+      let windowHeight = window.innerHeight;
+      let elementTop = reveal.getBoundingClientRect().top;
+      let elementVisible = 960;
+      if ( elementTop < windowHeight - elementVisible ) {
+        reveal.classList.add( "active" );
+      } else {
+        reveal.classList.remove( "active" );
+      }
+    }
+    window.addEventListener( "scroll", reveal );
+  </script>
+</body>
+
+</html>
