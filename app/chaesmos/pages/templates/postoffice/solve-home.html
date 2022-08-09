@@ -9,12 +9,20 @@
 <main>
   <div class="hidden" id="sol-write">
     <div class="background-wrapper z-50" id="postoffice-background-wrapper"></div>
-    <div class="flex flex-row justify-between sol-paper">
-      <div class="z-99 sol-paper-left">
-        <img src="{% static 'img/paper.png' %}" alt="solution-letter">
+    <div class="flex flex-row sol-paper-container">
+      <div class="sol-paper-left read-style size-paper">
+        <img class="w-full" src="{% static 'img/paper.png' %}" alt="solution-letter">
       </div>
-      <div class="z-99 sol-paper-right">
-        <img src="{% static 'img/paper.png' %}" alt="solution-letter">
+      <div class="sol-paper-right write-style size-paper">
+        <img class="w-full" src="{% static 'img/paper.png' %}" alt="solution-letter">
+      </div>
+    </div>
+    <div class="flex flex-row sol-paper-container">
+      <div class="read-style size-paper">
+
+      </div>
+      <div class="write-style size-paper">
+  
       </div>
     </div>
   </div>

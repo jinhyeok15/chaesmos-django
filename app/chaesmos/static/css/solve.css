@@ -34,31 +34,45 @@ body {
   cursor: pointer;
   background: transparent;
   border: none;
+  z-index: 40;
+}
+
+.sol-paper-container {
+  position: absolute;
+  width: 100%;
+}
+
+.sol-paper-container div {
   z-index: 50;
 }
 
-.sol-paper div img {
-  width: 450px;
-  height: 600px;
+.size-paper {
+  width: 400px;
+  height: 520px;
 }
 
-.sol-paper-left {
-  width: fit-content;
-  height: fit-content;
-  background: transparent;
+.write-style {
+  display: none;
+}
+
+.read-style {
+  margin: auto;
+}
+
+@media (min-width: 1280px) {
+  .write-style {
+    display: block;
+    margin-right: 300px;
+  }
+  .read-style {
+    margin-left: 300px;
+  }
+}
+
+.sol-paper-left img {
   transform: rotate(-12deg);
 }
 
-.sol-paper-right {
-  width: fit-content;
-  height: fit-content;
-  background: transparent;
+.sol-paper-right img {
   transform: rotate(12deg);
-}
-
-.sol-paper {
-  position: absolute;
-  top: 50px;
-  left: 17.5%;
-  width: 65%;
 }

@@ -105,6 +105,24 @@
   opacity: 0.1;
 }
 
+/* full-size */
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+/* screen-size */
+.w-screen {
+  width: 100vw;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
 /* nav */
 nav {
   display: flex;
@@ -143,4 +161,13 @@ nav {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+/* test */
+.bg-test1 {
+  background-color: aquamarine;
+}
+
+.bg-test2 {
+  background-color: beige;
 }
