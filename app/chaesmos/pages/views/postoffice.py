@@ -1,7 +1,4 @@
-from xml.dom import ValidationErr
-from django.forms import ValidationError
 from django.shortcuts import render, redirect
-from django.db import transaction
 
 # models
 from users.models import UserAccount, UserSession
