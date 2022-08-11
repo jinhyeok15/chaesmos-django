@@ -8,12 +8,12 @@ import random
 
 
 class LetterManager(models.Manager):
-    def rand_read(self):
+    def rand_read(self, user):
         size = settings.MAX_DAILY_LETTER_COUNT
 
         end_dt = datetime.now()
         start_dt = end_dt - timedelta(days=7)
-        qs = self.filter(created_at__range=(start_dt, end_dt))
+        qs = self.filter(created_at__range=(start_dt, end_dt)).exclude(fk_writer=user)
         
         if len(qs) >= size:
             return random.sample(qs, size)
@@ -37,3 +37,14 @@ class DailyPostManager(models.Manager):
         with transaction.atomic():
             for letter in letters:
                 super().create(fk_letter=letter, fk_reader=user, expired_at=tomorrow_datetime)
+
+    def is_expired(self, user):
+        post = self.filter(fk_reader=user).first()
+
+        if not post:
+            return True
+        
+        if post.expired_at < datetime.now():
+            return True
+        
+        return False

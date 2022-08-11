@@ -18,6 +18,8 @@ class Letter(TimeStampedModel):
     main = models.TextField()
     selected_date = models.DateField()
 
+    objects = LetterManager()
+
 
 class Tag(models.Model):
     fk_letter = models.ForeignKey(Letter, on_delete=models.CASCADE, related_name='tags')
