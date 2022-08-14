@@ -11,6 +11,16 @@
   font-family: "UhBeeann";
 }
 
+/* background-img */
+.background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
 /* animations */
 .fadein {
   -webkit-animation: fadein 3s;
@@ -40,6 +50,11 @@
   line-height: 1;
 }
 
+.text-3xl {
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem;
+}
+
 /* display */
 .flex {
   display: flex;
@@ -61,6 +76,10 @@
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 /* flex-direction */
@@ -161,6 +180,25 @@ nav {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+/* buttons */
+.button-main {
+  color: black;
+  border-radius: 10px;
+  border-style: none;
+  font-size: 30px;
+  cursor: pointer;
+  letter-spacing: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: aliceblue;
+  box-shadow: 0 5px #999;
+}
+
+.button-main:disabled, .button-main[disabled] {
+  opacity: 0.3;
+  cursor: default;
 }
 
 /* test */

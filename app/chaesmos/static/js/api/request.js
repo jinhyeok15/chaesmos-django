@@ -7,3 +7,7 @@ export const HOST = LOCALHOST;
 export const requestLogout = async () => {
   return await POST(`${HOST}/api/user/logout/`);
 }
+
+export const requestWriteSolution = async (body) => {
+  return await POST(`${HOST}/api/postoffice/solve/`, body);
+}

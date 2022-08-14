@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import UserLogout
+from postoffice.views import SolutionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
-    path('api/', include(([
-        path('user/logout/', UserLogout.as_view()),
+    path('api/user/', include(([
+        path('logout/', UserLogout.as_view()),
     ], 'users'))),
+    path('api/postoffice/', include(([
+        path('solve/', SolutionView.as_view()),
+    ], 'postoffice'))),
 ]

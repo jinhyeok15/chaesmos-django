@@ -5,10 +5,11 @@ from django.conf import settings
 from datetime import datetime, timedelta
 from datetime import date
 import random
+from django.utils import timezone
 
 
 class LetterManager(models.Manager):
-    def rand_read(self, user):
+    def rand_read(self, user) -> list:
         size = settings.MAX_DAILY_LETTER_COUNT
 
         end_dt = datetime.now()
@@ -16,18 +17,21 @@ class LetterManager(models.Manager):
         qs = self.filter(created_at__range=(start_dt, end_dt)).exclude(fk_writer=user)
         
         if len(qs) >= size:
-            return random.sample(qs, size)
+            return random.sample(list(qs), size)
         else:
             end_dt = datetime.now()
             start_dt = end_dt - timedelta(days=30)
 
             for i in range(settings.MAX_READ_COUNT):
                 start_dt -= timedelta(days=30*i)
-                qs = self.filter(created_at__range=(start_dt, end_dt))
+                qs = self.filter(created_at__range=(start_dt, end_dt)).exclude(fk_writer=user)
 
                 if len(qs) >= size:
-                    return random.sample(qs, size)
-        return random.sample(self.all(), size)
+                    return random.sample(list(qs), size)
+        if qs:
+            return random.sample(list(qs), len(qs))
+
+        return []
 
 
 class DailyPostManager(models.Manager):
@@ -39,12 +43,12 @@ class DailyPostManager(models.Manager):
                 super().create(fk_letter=letter, fk_reader=user, expired_at=tomorrow_datetime)
 
     def is_expired(self, user):
-        post = self.filter(fk_reader=user).first()
+        post = self.filter(fk_reader=user).last()
 
         if not post:
             return True
         
-        if post.expired_at < datetime.now():
+        if post.expired_at <= timezone.now():
             return True
         
         return False

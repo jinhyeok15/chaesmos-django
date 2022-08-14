@@ -24,17 +24,6 @@ from commons.views import (
 # Create your views here.
 
 
-def index(request):
-    context = {'view_name': INDEX_VIEW_NAME}
-    session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
-
-    if session_id is None:
-        context['is_logined'] = False
-    context['is_logined'] = UserSession.objects.is_valid(session_id)
-
-    return render(request, 'index.html', context)
-
-
 def signup(request):
     if request.method == 'POST':
         form = UserAccountSignUpForm(request.POST)

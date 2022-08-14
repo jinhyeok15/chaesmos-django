@@ -2,29 +2,23 @@ from django.shortcuts import render, redirect
 from django.db import transaction
 
 # models
-from users.models import UserAccount, UserSession
 from postoffice.models import DailyPost, Letter
 
 # forms
 from postoffice.forms import LetterCreateForm
 
+# serializers
+from postoffice.serializers import LetterListSerializer
+
 # commons
-from commons.views import WRITE_VIEW_NAME, SOLVE_VIEW_NAME, INDEX_VIEW_NAME
-
-# cookies
-from commons.cookies import USER_SESSION_COOKIE_KEY
+from commons.views import SUCCESS_VIEW_NAME
+from commons.views.decorators import authorize
 
 
-def write(request):
-    context = {'view_name': WRITE_VIEW_NAME}
-    session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
-
-    if session_id is None:
-        context['is_logined'] = False
-    context['is_logined'] = UserSession.objects.is_valid(session_id)
-    
+@authorize
+def write(request, context):
     if request.method == 'POST':
-        session = UserSession.objects.get(pk=session_id)
+        session = context['session']
         user = session.fk_user_account
         form = LetterCreateForm({
             'title': request.POST.get('title'),
@@ -35,22 +29,16 @@ def write(request):
         if form.is_valid():
             form.save()
 
-        return redirect(INDEX_VIEW_NAME)
+        return redirect(SUCCESS_VIEW_NAME)
     else:
         form = LetterCreateForm()
     context['form'] = form
     return render(request, 'postoffice/write.html', context=context)
 
-def solve(request):
-    context = {'view_name': SOLVE_VIEW_NAME}
-    session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
 
-    if session_id is None:
-        context['is_logined'] = False
-    context['is_logined'] = UserSession.objects.is_valid(session_id)
-
-    session = UserSession.objects.get(pk=session_id)
-    user = session.fk_user_account
+@authorize
+def solve(request, context):
+    user = context['user']
 
     if DailyPost.objects.is_expired(user):
         with transaction.atomic():
@@ -58,7 +46,20 @@ def solve(request):
             DailyPost.objects.generate(user, letters)
             context['letters'] = letters
     else:
-        letters = [post.fk_letter for post in user.dailyposts]
+        dailyposts = DailyPost.objects.filter(fk_reader=user)
+        letters = [post.fk_letter for post in dailyposts] if dailyposts else []
+        
         context['letters'] = letters
+
+    context['letter_list'] = {'letters': LetterListSerializer(letters, many=True).data}
     
-    return render(request, 'postoffice/solve-home.html', context=context)
+    return render(request, 'postoffice/solve.html', context=context)
+
+
+@authorize
+def read_letters(request, context):
+    user = context['user']
+    letters = Letter.objects.filter(fk_writer=user)
+    print(letters)
+
+    return render(request, 'postoffice/my-mails.html', context=context)

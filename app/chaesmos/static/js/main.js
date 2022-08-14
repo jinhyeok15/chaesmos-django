@@ -14,28 +14,3 @@ if (logoutNavButton) {
       .catch(e => console.log(e));
   };
 }
-
-// postoffice
-const postofficeBackgroundWrapper = document.getElementById('postoffice-background-wrapper');
-const solWrite = document.getElementById('sol-write');
-
-const postofficeMailbox = document.getElementById('postoffice-mailbox');
-const postofficeMailboxButton = document.getElementById('postoffice-mailbox-button');
-
-let postofficeMailboxButtonClickState = false;
-
-postofficeMailboxButton.addEventListener('click', e => {
-  if (!postofficeMailboxButtonClickState) {
-    postofficeMailboxButtonClickState = true;
-    postofficeMailbox.classList.add("hidden");
-    solWrite.classList.remove("hidden");
-  }
-});
-
-postofficeBackgroundWrapper.addEventListener('click', e => {
-  if (postofficeMailboxButtonClickState) {
-    postofficeMailbox.classList.remove("hidden");
-    postofficeMailboxButtonClickState = false;
-    solWrite.classList.add("hidden");
-  }
-});

@@ -13,6 +13,10 @@
 
 <div class="btns">
   <a href="{% url 'page-write' %}" class="index-link-button">고민쓰기</a>
+  {% if is_logined %}
   <a href="{% url 'page-solve' %}" class="index-link-button">해결하기</a>
+  {% else %}
+  <a href="{% url 'page-login' %}" class="index-link-button">해결하기</a>
+  {% endif %}
 </div>
 {% endblock %}

@@ -7,3 +7,4 @@ class PostofficeAdmin(admin.ModelAdmin):
 
 admin.site.register(Letter, PostofficeAdmin)
 admin.site.register(Solution, PostofficeAdmin)
+admin.site.register(DailyPost, PostofficeAdmin)

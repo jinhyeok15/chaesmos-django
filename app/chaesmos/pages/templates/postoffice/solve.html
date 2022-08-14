@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link href="{% static 'css/solve.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="hidden" id="sol-write">
+    <div class="background-wrapper z-50" id="postoffice-background-wrapper"></div>
+    <div class="flex flex-row sol-paper-container">
+      <div class="sol-paper-left read-style">
+        <img class="w-full size-paper" src="{% static 'img/paper.png' %}" alt="solution-letter">
+      </div>
+      <div class="sol-paper-right write-style">
+        <img class="w-full size-paper" src="{% static 'img/paper.png' %}" alt="solution-letter">
+      </div>
+    </div>
+    <div class="flex flex-row sol-paper-container">
+      <div class="read-style size-paper">
+        <div class="flex items-center justify-center no-data hidden" id="letter-no-data">
+          <span>고민이 없습니다</span>
+        </div>
+        {% for letter in letters %}
+        <div class="hidden letter">
+          <h1 class="letter-title">{{ letter.title }}</h1>
+          <div class="letter-main">
+            {{ letter.main }}
+          </div>
+          <div class="flex justify-end letter-date">{{ letter.selected_date }}</div>
+        </div>
+        {% endfor %}
+        <div class="flex justify-between w-full">
+          <div class="flex flex-row justify-between read-button">
+            <button disabled=true class="button-main button-text-padding text-3xl" id="letter-button-back">뒤로</button>
+            <button class="button-main button-text-padding text-3xl" id="letter-button-next">다음</button>
+          </div>
+        </div>
+      </div>
+      <div class="write-style size-paper">
+        <form method="POST" class="write-letter"> {% csrf_token %}
+          <textarea id="write-letter-text" name="main" placeholder="고민을 해결해주세요." cols="10" rows="10" class="letter-main-form" spellcheck="false"></textarea>
+          <div class="flex justify-end send-button">
+            <input type="submit" name="submit" class="button-main button-text-padding text-3xl" id="solution-write-submit" value="보내기"></input>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center text-white-base z-20 fadein">
+      <h1 class="text-6xl py-3">미래, 혹은 과거로부터 온 고민들을 여러분이 직접 해결해주세요.</h1>
+      <h3 class="text-5xl py-2">우체통을 눌러 편지지를 확인해보세요.</h3>
+    </div>
+    <div class="flex flex-col items-center postoffice-mailbox z-10" id="postoffice-mailbox">
+      <img src="{% static 'img/post.png' %}" alt="post">
+      <button type="button" id="postoffice-mailbox-button"></button>
+    </div>
+  </div>
+  <img src="{% static 'img/solve-background.png' %}" alt="background" class="background-img">
+</main>
+{% endblock %}
+
+{% block script %}
+<script type="module" src="{% static 'js/postoffice.js' %}"></script>
+{{ letter_list | json_script:"letter-list" }}
+{% endblock %}
