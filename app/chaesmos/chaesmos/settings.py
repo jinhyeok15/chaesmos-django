@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     # local apps
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'chaesmos.urls'
@@ -85,6 +87,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chaesmos.wsgi.application'
+
+
+# CORS
+CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://127.0.0.1:8000']
 
 
 # Database

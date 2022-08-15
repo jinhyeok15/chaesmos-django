@@ -3,3 +3,4 @@ bcrypt==3.2.2
 pytz
 djangorestframework==3.13.1
 django-environ
+django-cors-headers
