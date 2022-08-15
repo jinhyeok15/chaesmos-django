@@ -6,7 +6,7 @@ ADD ./chaesmos /srv/chaesmos
 # Install application requirements
 ADD ./config/requirements.txt /srv/chaesmos
 
-RUN apt-get update
+RUN apt-get update -y
 RUN sudo apt-get install -y libpq-dev python-dev
 RUN pip3 install -r /srv/chaesmos/requirements.txt
 
