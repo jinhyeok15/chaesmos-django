@@ -7,5 +7,16 @@
 {% endblock %}
 
 {% block content %}
+<div class="mails">
+  {% for letter in letters %}
+  <div class="mail">
+    <img src="{% static 'img/mail.png' %}" alt="">
+    <div class="mail-info">
+      <div class="text-center mr-6"><p>{{ letter.selected_date }}</p></div>
+      <div class="mt-24 ml-8 text-2xl text-white-base"><p>제목: {{ letter.title }}</p></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 <img src="{% static 'img/background.jpg' %}" alt="background" class="background-img">
 {% endblock %}

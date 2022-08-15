@@ -20,6 +20,9 @@ class Letter(TimeStampedModel):
 
     objects = LetterManager()
 
+    class Meta:
+        ordering = ['-id']
+
 
 class Tag(models.Model):
     fk_letter = models.ForeignKey(Letter, on_delete=models.CASCADE, related_name='tags')

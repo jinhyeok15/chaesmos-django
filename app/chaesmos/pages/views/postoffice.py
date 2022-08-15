@@ -60,6 +60,7 @@ def solve(request, context):
 def read_letters(request, context):
     user = context['user']
     letters = Letter.objects.filter(fk_writer=user)
-    print(letters)
+
+    context['letters'] = letters
 
     return render(request, 'postoffice/my-mails.html', context=context)
