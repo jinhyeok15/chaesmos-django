@@ -5,8 +5,7 @@ ADD ./chaesmos /srv/chaesmos
 
 # Install application requirements
 ADD ./config/requirements.txt /srv/chaesmos
-RUN sudo apt update
-RUN apt-get install python3.9-dev
+
 RUN pip3 install -r /srv/chaesmos/requirements.txt
 
 # Add start script
