@@ -22,9 +22,6 @@ services:
         depends_on:
             - webapp
         volumes:
-            - ./config/webserver/nginx.tmpl:/etc/nginx/conf.d/nginx.tmpl
-            - ./config/webserver/localhost.crt:/etc/ssl/certs/localhost.crt
-            - ./config/webserver/localhost.key:/etc/ssl/private/localhost.key
             - static-files:/srv/static-files
         env_file:
             - ./config/environment/.env
