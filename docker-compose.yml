@@ -1,11 +1,5 @@
 version: "3"
 
-volumes:
-    static-files:
-        driver: local
-    postgres:
-        driver: local
-
 services:
     db:
         image: postgres:14.2
@@ -23,9 +17,11 @@ services:
             - webapp
         volumes:
             - static-files:/srv/static-files
+            - ./web/conf.d:/etc/nginx/conf.d
         env_file:
             - ./config/environment/.env
-        command: /bin/sh -c "envsubst < /etc/nginx/conf.d/nginx.tmpl > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
+        networks:
+            - nginx_network
 
     webapp:
         build:
@@ -39,3 +35,9 @@ services:
             - db
         env_file:
             - ./config/environment/.env
+        networks:
+            - nginx_network
+
+networks:
+    nginx_network:
+        driver: bridge
