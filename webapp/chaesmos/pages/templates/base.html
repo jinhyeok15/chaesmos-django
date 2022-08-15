@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   {% block style %}{% endblock style %}
   <link rel="stylesheet" href="{% static 'css/base-style.css' %}">
@@ -33,6 +34,32 @@
 
   {% block content %}{% endblock content %}
   <script type="module" src="{% static 'js/main.js' %}"></script>
+  <script>
+    document.addEventListener( 'DOMContentLoaded', () => {
+      new TypeIt( '.logo' )
+        .pause( 1000 )
+        .go();
+
+    } );
+    const textWrapper = document.querySelector( '.ml3' );
+    textWrapper.innerHTML = textWrapper.textContent.replace( /\S/g, "<span class='letter'>$&</span>" );
+
+    anime.timeline( { loop: true } )
+      .add( {
+        targets: '.ml3 .letter',
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        duration: 2250,
+        delay: ( el, i ) => 150 * ( i + 1 )
+      } )
+      .add( {
+        targets: '.ml3',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      } );
+  </script>
   {% block script %}{% endblock script %}
 </body>
 

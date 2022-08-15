@@ -144,4 +144,4 @@ GitHub.sublime-settings
 config.js
 
 # static root
-.static
+static_files
