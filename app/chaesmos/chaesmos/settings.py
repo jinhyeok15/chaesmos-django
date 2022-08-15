@@ -34,7 +34,7 @@ if env('ENV') not in ['LOCAL', 'DEV', 'PROD']:
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True if env('DEBUG')=='TRUE' else False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', env('HOST')]
 
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,7 +66,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'chaesmos.urls'
@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'chaesmos.wsgi.application'
 
 
 # CORS
-CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://127.0.0.1:8000']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Database
