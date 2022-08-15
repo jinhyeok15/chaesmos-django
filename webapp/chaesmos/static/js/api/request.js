@@ -1,6 +1,5 @@
-import { LOCALHOST, POST, PUT, GET } from './http.js';
-
-export const HOST = LOCALHOST;
+import { POST, PUT, GET } from './http.js';
+import { HOST } from '../config.js';
 
 // requests
 

@@ -1,0 +1,31 @@
+version: "3"
+
+volumes:
+    static-files:
+        driver: local
+
+services:
+    webserver:
+        image: nginx:1.15
+        ports:
+            - "80:80"
+            - "443:443"
+        depends_on:
+            - app
+        volumes:
+            - ./config/webserver/nginx.tmpl:/etc/nginx/conf.d/nginx.tmpl
+            - static-files:/srv/static-files
+        env_file:
+            - ./config/environment/.env
+        command: /bin/sh -c "envsubst < /etc/nginx/conf.d/nginx.tmpl > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
+
+    webapp:
+        build:
+            context: webapp
+        volumes:
+            - ./webapp/chaesmos:/srv/chaesmos
+            - static-files:/srv/static-files
+        expose:
+            - "8000"
+        env_file:
+            - ./config/environment/.env

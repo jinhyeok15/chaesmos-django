@@ -139,3 +139,9 @@ GitHub.sublime-settings
 
 # store
 .DS_Store
+
+# setting file js
+config.js
+
+# static root
+.static

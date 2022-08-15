@@ -21,9 +21,9 @@ from datetime import timedelta
 
 
 class UserAccount(TimeStampedModel):
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    nickname = models.CharField(max_length=50)
+    username = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
+    nickname = models.CharField(max_length=255)
 
     objects = UserAccountManager()
 

@@ -23,15 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-if env('ENV') not in ['LOCAL', 'DEV', 'PROD']:
-    raise ImproperlyConfigured('you must set env in `LOCAL`, `DEV`, `PROD`')
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if env('DEBUG')=='TRUE' else False
@@ -96,14 +93,14 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if env('ENV') in 'LOCAL':
+if env('PRODUCTION').lower()=='false':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-elif env('ENV')==['DEV', 'PROD']:
+elif env('PRODUCTION').lower()=='true':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -114,6 +111,8 @@ elif env('ENV')==['DEV', 'PROD']:
             'PORT': env('DB_PORT') or '5432',
         }
     }
+else:
+    ImproperlyConfigured()
 
 
 # Password validation
@@ -152,6 +151,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATIC_ROOT = '/srv/static-files'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
