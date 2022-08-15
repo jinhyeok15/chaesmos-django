@@ -11,7 +11,7 @@ services:
             - "80:80"
             - "443:443"
         depends_on:
-            - app
+            - webapp
         volumes:
             - ./config/webserver/nginx.tmpl:/etc/nginx/conf.d/nginx.tmpl
             - static-files:/srv/static-files
