@@ -3,8 +3,17 @@ version: "3"
 volumes:
     static-files:
         driver: local
+    postgres:
+        driver: local
 
 services:
+    db:
+        image: postgres:14.2
+        volumes:
+            - postgres:/var/lib/postgresql/data/pgdata
+        env_file:
+            - ./config/environment/development.env
+
     webserver:
         image: nginx:1.15
         ports:
@@ -27,5 +36,7 @@ services:
             - static-files:/srv/static-files
         expose:
             - "8000"
+        depends_on:
+            - db
         env_file:
             - ./config/environment/.env
