@@ -151,7 +151,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-if env('PRODUCTION').lower == 'true':
+if env('PRODUCTION').lower() == 'true':
     STATIC_ROOT = '/srv/static-files'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
