@@ -149,10 +149,10 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/' if not env('PRODUCTION') else '/static_files/'
+STATIC_URL = '/static/'
 
 if env('PRODUCTION'):
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+    STATIC_ROOT = '/srv/static-files'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 

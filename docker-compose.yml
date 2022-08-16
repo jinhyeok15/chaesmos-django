@@ -23,7 +23,7 @@ services:
             - webapp
         volumes:
             - static-files:/srv/static-files
-            - ./web/conf.d:/etc/nginx/conf.d
+            - ./config/nginx/conf.d:/etc/nginx/conf.d
         env_file:
             - ./config/environment/.env
         networks:

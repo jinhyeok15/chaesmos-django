@@ -6,7 +6,7 @@ WORKDIR /
 ADD ./chaesmos /srv/chaesmos
 
 # Install application requirements
-ADD ./config/requirements.txt /srv/chaesmos
+ADD ./config/requirements.txt /srv/chaesmos/
 
 RUN apt-get update
 RUN apt-get install -y libpq-dev python-dev
