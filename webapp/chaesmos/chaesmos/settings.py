@@ -33,7 +33,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if env('DEBUG')=='TRUE' else False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', env('HOST')]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'secret_postoffice', env('HOST')]
 
 
 # Application definition
@@ -151,7 +151,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-if env('PRODUCTION'):
+if env('PRODUCTION').lower == 'true':
     STATIC_ROOT = '/srv/static-files'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
