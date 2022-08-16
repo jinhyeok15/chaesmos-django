@@ -25,6 +25,8 @@ services:
             - static-files:/srv/static-files
             # - ./config/nginx/conf.d:/etc/nginx/conf.d
             - ./config/webserver/nginx.tmpl:/etc/nginx/conf.d/nginx.tmpl
+            - ./config/webserver/webserver.crt:/etc/ssl/certs/webserver.crt
+            - ./config/webserver/webserver.key:/etc/ssl/private/webserver.key
         env_file:
             - ./config/environment/.env
         networks:
