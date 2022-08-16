@@ -33,7 +33,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if env('DEBUG')=='TRUE' else False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'secret_postoffice', env('HOST')]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
