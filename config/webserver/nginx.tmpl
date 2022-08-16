@@ -12,12 +12,12 @@ http {
     server_tokens off;
     
     upstream django {
-        server ${NGINX_SERVER_NAME}:8000;
+        server webapp:8000;
     }
 
     server {
         listen 80;
-        server_name 127.0.0.1;
+        # server_name ${NGINX_SERVER_NAME};
 
         location /static {
             alias /srv/static-files;
