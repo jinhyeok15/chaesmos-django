@@ -31,6 +31,7 @@ services:
             - ./config/environment/.env
         networks:
             - nginx_network
+        command: /bin/sh -c "envsubst < /etc/nginx/conf.d/nginx.tmpl > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
 
     webapp:
         build:
