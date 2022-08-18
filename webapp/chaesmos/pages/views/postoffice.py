@@ -14,6 +14,10 @@ from postoffice.serializers import LetterListSerializer
 from commons.views import SUCCESS_VIEW_NAME
 from commons.views.decorators import authorize
 
+# utils
+from django.utils import timezone
+from datetime import timedelta
+
 
 @authorize
 def write(request, context):
@@ -46,7 +50,7 @@ def solve(request, context):
             DailyPost.objects.generate(user, letters)
             context['letters'] = letters
     else:
-        dailyposts = DailyPost.objects.filter(fk_reader=user)
+        dailyposts = DailyPost.objects.filter(fk_reader=user, expired_at__range=(timezone.now(), timezone.now()+timedelta(days=1)))
         letters = [post.fk_letter for post in dailyposts] if dailyposts else []
         
         context['letters'] = letters

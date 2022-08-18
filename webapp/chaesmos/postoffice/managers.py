@@ -43,7 +43,7 @@ class DailyPostManager(models.Manager):
                 super().create(fk_letter=letter, fk_reader=user, expired_at=tomorrow_datetime)
 
     def is_expired(self, user):
-        post = self.filter(fk_reader=user).last()
+        post = self.filter(fk_reader=user).last()  # 확실하게 일자별로 descending sort해주고 first()로 불러오는 것이 더 좋을 듯
 
         if not post:
             return True

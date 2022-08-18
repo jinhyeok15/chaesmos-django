@@ -131,3 +131,34 @@
   margin-left: 75px;
   width: 300px;
 }
+
+.solve-title h1 {
+  font-size: 32px;
+  width: 270px;
+}
+
+.solve-title h3 {
+  font-size: 24px;
+}
+
+@media (min-width: 768px) {
+  .solve-title h1 {
+    width: auto;
+    font-size: 48px;
+  }
+  
+  .solve-title h3 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .solve-title h1 {
+    font-size: 60px;
+    width: auto;
+  }
+  
+  .solve-title h3 {
+    font-size: 48px;
+  }
+}

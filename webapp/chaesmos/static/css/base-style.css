@@ -60,6 +60,11 @@
   line-height: 2rem; /* 32px */
 }
 
+.text-base {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+}
+
 /* text-align */
 .text-center {
   text-align: center;
@@ -118,6 +123,11 @@
   margin-left: 2rem; /* 32px */
 }
 
+.mx-6 {
+  margin-left: 1.5rem; /* 24px */
+  margin-right: 1.5rem; /* 24px */
+}
+
 /* padding */
 .py-3 {
   padding-top: 0.75rem; /* 12px */
@@ -127,6 +137,11 @@
 .py-2 {
   padding-top: 0.5rem; /* 8px */
   padding-bottom: 0.5rem; /* 8px */
+}
+
+.px-6 {
+  padding-left: 1.5rem; /* 24px */
+  padding-right: 1.5rem; /* 24px */
 }
 
 /* z-index */
@@ -181,10 +196,17 @@ nav {
 }
 
 .nav-logo {
-  color: aliceblue;
-  font-size: 50px;
-  font-weight: bold;
-  text-decoration: none;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .nav-logo {
+    display: block;
+    color: aliceblue;
+    font-size: 48px;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
 
 .nav-right {
@@ -192,7 +214,7 @@ nav {
   text-decoration: none;
   font-weight: bold;
   padding: 10px;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .nav-right:hover {
