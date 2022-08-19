@@ -6,26 +6,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="info">
-  <div class="description">
-    <h1 class="text1">당신의 고민을 적어 신비한 우체통에 넣어주세요</h1>
-    <h4 class="text2">과거, 혹은 미래로부터 당신의 고민을 해결해주는 편지지가 우체통 너머 도착할 거랍니다.</h4>
+<session class="info">
+  <div class="description text-center">
+    <span class="main-title"><h1 class="text1">당신의 고민을 적어 신비한 우체통에 넣어주세요</h1></span>
+    <span class="sub-title"><h4 class="text2">과거, 혹은 미래로부터 당신의 고민을 해결해주는 편지지가 우체통 너머 도착할 거랍니다.</h4></span>
   </div>
   <div class="scroll"></div>
-</div>
-<form method="POST" class="text reveal"> {% csrf_token %}
-  <div class="container">
-    {{ form.title }}
-    {{ form.main }}
+</session>
+<session class="h-screen">
+  <div class="flex justify-center w-full write-form-container">
+    <img src="{% static 'img/paper.png' %}" alt="" class="write-form-size">
+    <form method="POST" class="reveal write-form-size write-form"> {% csrf_token %}
+      <div class="container">
+        {{ form.title }}
+        {{ form.main }}
+      </div>
+      <div class="flex flex-row items-center tail">
+        <div class="date">
+          <label for="choose">날짜:</label>
+          {{ form.selected_date }}
+        </div>
+        <input type="submit" name="submit" class="send" value="보내기"></input>
+      </div>
+    </form>
   </div>
-  <div class="last-send">
-    <div class="date">
-      <label for="choose">날짜:</label>
-      {{ form.selected_date }}
-    </div>
-    <input type="submit" name="submit" class="send" value="보내기"></input>
-  </div>
-</form>
+</session>
 {% endblock %}
 
 {% block script %}

@@ -11,12 +11,18 @@ from postoffice.forms import LetterCreateForm
 from postoffice.serializers import LetterListSerializer
 
 # commons
-from commons.views import SUCCESS_VIEW_NAME
+from commons.views import SUCCESS_VIEW_NAME, WRITE_VIEW_NAME, SOLVE_VIEW_NAME, READ_LETTERS_VIEW_NAME
 from commons.views.decorators import authorize
+
+# utils
+from django.utils import timezone
+from datetime import timedelta
 
 
 @authorize
 def write(request, context):
+    context['view_name'] = WRITE_VIEW_NAME
+
     if request.method == 'POST':
         session = context['session']
         user = session.fk_user_account
@@ -37,7 +43,9 @@ def write(request, context):
 
 
 @authorize
-def solve(request, context):
+def solve(request, context):  # POST는 REST_API로 처리
+    context['view_name'] = SOLVE_VIEW_NAME
+
     user = context['user']
 
     if DailyPost.objects.is_expired(user):
@@ -46,7 +54,7 @@ def solve(request, context):
             DailyPost.objects.generate(user, letters)
             context['letters'] = letters
     else:
-        dailyposts = DailyPost.objects.filter(fk_reader=user)
+        dailyposts = DailyPost.objects.filter(fk_reader=user, expired_at__range=(timezone.now(), timezone.now()+timedelta(days=1)))
         letters = [post.fk_letter for post in dailyposts] if dailyposts else []
         
         context['letters'] = letters
@@ -58,6 +66,8 @@ def solve(request, context):
 
 @authorize
 def read_letters(request, context):
+    context['view_name'] = READ_LETTERS_VIEW_NAME
+
     user = context['user']
     letters = Letter.objects.filter(fk_writer=user)
 
