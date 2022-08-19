@@ -1,6 +1,18 @@
 import { requestLogout } from "./api/request.js";
 
 export const logoutNavButton = document.getElementById('logout-nav-button');
+const navLogo = document.getElementById('nav-logo');
+
+const responsiveSet = () => {
+  if (window.innerWidth < 640) {
+    navLogo.innerText = '홈';
+  } else {
+    navLogo.innerText = '신비한 우체국';
+  }
+}
+
+window.onresize = responsiveSet;
+window.onload = responsiveSet;
 
 if (logoutNavButton) {
   logoutNavButton.onclick = (ev) => {
