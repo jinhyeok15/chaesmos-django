@@ -10,17 +10,18 @@
 <section class="contents">
   <h1 class="ml3">당신의 고민을 적어서 신비한 우체국에 보내보세요.</h1>
 </section>
-
-<div class="btns">
-  {% if is_logined %}
-  <a href="{% url 'page-write' %}" class="index-link-button">고민쓰기</a>
-  {% else %}
-  <a href="{% url 'page-login' %}" class="index-link-button">고민쓰기</a>
-  {% endif %}
-  {% if is_logined %}
-  <a href="{% url 'page-solve' %}" class="index-link-button">해결하기</a>
-  {% else %}
-  <a href="{% url 'page-login' %}" class="index-link-button">해결하기</a>
-  {% endif %}
+<div class="w-full flex justify-center">
+  <div class="flex justify-between btns">
+    {% if is_logined %}
+    <a href="{% url 'page-write' %}" class="button-main px-6 py-2">고민쓰기</a>
+    {% else %}
+    <a href="{% url 'page-login' %}" class="button-main px-6 py-2">고민쓰기</a>
+    {% endif %}
+    {% if is_logined %}
+    <a href="{% url 'page-solve' %}" class="button-main px-6 py-2">해결하기</a>
+    {% else %}
+    <a href="{% url 'page-login' %}" class="button-main px-6 py-2">해결하기</a>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

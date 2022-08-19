@@ -19,6 +19,7 @@
     </div>
     <div class="flex flex-row sol-paper-container">
       <div class="read-style size-paper">
+        <button class="sm-look-button mr-12" id="sm-look-write-letter">해결하기</button>
         <div class="flex items-center justify-center no-data hidden" id="letter-no-data">
           <span>고민이 없습니다</span>
         </div>
@@ -39,6 +40,7 @@
         </div>
       </div>
       <div class="write-style size-paper">
+        <button class="sm-look-button" id="sm-look-read-letter">고민보기</button>
         <form method="POST" class="write-letter"> {% csrf_token %}
           <textarea id="write-letter-text" name="main" placeholder="고민을 해결해주세요." cols="10" rows="10" class="letter-main-form" spellcheck="false"></textarea>
           <div class="flex justify-end send-button">
@@ -49,9 +51,9 @@
     </div>
   </div>
   <div class="flex flex-col items-center">
-    <div class="flex flex-col items-center text-white-base z-20 fadein">
-      <h1 class="text-6xl py-3">미래, 혹은 과거로부터 온 고민들을 여러분이 직접 해결해주세요.</h1>
-      <h3 class="text-5xl py-2">우체통을 눌러 편지지를 확인해보세요.</h3>
+    <div class="flex flex-col text-center items-center text-white-base z-20 fadein solve-title">
+      <h1 class="py-3">미래, 혹은 과거로부터 온 고민들을 여러분이 직접 해결해주세요.</h1>
+      <h3 class="py-2">우체통을 눌러 편지지를 확인해보세요.</h3>
     </div>
     <div class="flex flex-col items-center postoffice-mailbox z-10" id="postoffice-mailbox">
       <img src="{% static 'img/post.png' %}" alt="post">

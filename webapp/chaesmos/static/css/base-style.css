@@ -21,6 +21,11 @@
   height: 100vh;
 }
 
+/* background */
+.bg-transparent {
+  background: transparent
+}
+
 /* animations */
 .fadein {
   -webkit-animation: fadein 3s;
@@ -58,6 +63,11 @@
 .text-2xl {
   font-size: 1.5rem; /* 24px */
   line-height: 2rem; /* 32px */
+}
+
+.text-base {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
 }
 
 /* text-align */
@@ -106,8 +116,20 @@
 }
 
 /* margin */
+.m-auto {
+  margin: auto;
+}
+
 .mr-6 {
   margin-right: 1.5rem; /* 24px */
+}
+
+.mr-10 {
+  margin-right: 2.5rem; /* 40px */
+}
+
+.mr-12 {
+  margin-right: 3rem; /* 48px */
 }
 
 .mt-24 {
@@ -116,6 +138,11 @@
 
 .ml-8 {
   margin-left: 2rem; /* 32px */
+}
+
+.mx-6 {
+  margin-left: 1.5rem; /* 24px */
+  margin-right: 1.5rem; /* 24px */
 }
 
 /* padding */
@@ -127,6 +154,11 @@
 .py-2 {
   padding-top: 0.5rem; /* 8px */
   padding-bottom: 0.5rem; /* 8px */
+}
+
+.px-6 {
+  padding-left: 1.5rem; /* 24px */
+  padding-right: 1.5rem; /* 24px */
 }
 
 /* z-index */
@@ -181,10 +213,17 @@ nav {
 }
 
 .nav-logo {
-  color: aliceblue;
-  font-size: 50px;
-  font-weight: bold;
-  text-decoration: none;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .nav-logo {
+    display: block;
+    color: aliceblue;
+    font-size: 48px;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
 
 .nav-right {
@@ -192,7 +231,7 @@ nav {
   text-decoration: none;
   font-weight: bold;
   padding: 10px;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .nav-right:hover {

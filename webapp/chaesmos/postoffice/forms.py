@@ -29,7 +29,7 @@ class LetterCreateForm(forms.ModelForm):
 
 class TagForm(forms.Form):
     letter = forms.IntegerField()
-    tags = forms.CharField()
+    tags = forms.CharField()  # 하나의 string에 여러개의 tag를 붙이기 보다 getlist()를 하여 list로 불러오도록 바꾸기
 
     class Meta:
         model = Tag
