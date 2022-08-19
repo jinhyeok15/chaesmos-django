@@ -14,7 +14,8 @@ class LetterManager(models.Manager):
 
         end_dt = datetime.now()
         start_dt = end_dt - timedelta(days=7)
-        qs = self.filter(created_at__range=(start_dt, end_dt)).exclude(fk_writer=user)
+        qs = self.filter(created_at__range=(start_dt, end_dt))\
+                .exclude(fk_writer=user).exclude(solutions__fk_sender=user)
         
         if len(qs) >= size:
             return random.sample(list(qs), size)
@@ -24,7 +25,7 @@ class LetterManager(models.Manager):
 
             for i in range(settings.MAX_READ_COUNT):
                 start_dt -= timedelta(days=30*i)
-                qs = self.filter(created_at__range=(start_dt, end_dt)).exclude(fk_writer=user)
+                qs = self.filter(created_at__range=(start_dt, end_dt)).exclude(fk_writer=user).exclude(solutions__fk_sender=user)
 
                 if len(qs) >= size:
                     return random.sample(list(qs), size)

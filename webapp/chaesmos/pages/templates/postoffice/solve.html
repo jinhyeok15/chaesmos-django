@@ -19,6 +19,7 @@
     </div>
     <div class="flex flex-row sol-paper-container">
       <div class="read-style size-paper">
+        <button class="sm-look-button mr-12" id="sm-look-write-letter">해결하기</button>
         <div class="flex items-center justify-center no-data hidden" id="letter-no-data">
           <span>고민이 없습니다</span>
         </div>
@@ -39,6 +40,7 @@
         </div>
       </div>
       <div class="write-style size-paper">
+        <button class="sm-look-button" id="sm-look-read-letter">고민보기</button>
         <form method="POST" class="write-letter"> {% csrf_token %}
           <textarea id="write-letter-text" name="main" placeholder="고민을 해결해주세요." cols="10" rows="10" class="letter-main-form" spellcheck="false"></textarea>
           <div class="flex justify-end send-button">

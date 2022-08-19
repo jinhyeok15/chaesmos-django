@@ -21,6 +21,11 @@
   height: 100vh;
 }
 
+/* background */
+.bg-transparent {
+  background: transparent
+}
+
 /* animations */
 .fadein {
   -webkit-animation: fadein 3s;
@@ -111,8 +116,20 @@
 }
 
 /* margin */
+.m-auto {
+  margin: auto;
+}
+
 .mr-6 {
   margin-right: 1.5rem; /* 24px */
+}
+
+.mr-10 {
+  margin-right: 2.5rem; /* 40px */
+}
+
+.mr-12 {
+  margin-right: 3rem; /* 48px */
 }
 
 .mt-24 {

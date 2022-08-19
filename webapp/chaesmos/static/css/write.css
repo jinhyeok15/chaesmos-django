@@ -67,11 +67,11 @@ a {
   .main-title {
     width: fit-content;
   }
-  
+
   .sub-title {
     width: fit-content;
   }
-  
+
   .text1 {
     font-size: 50px;
     color: #212121;
@@ -191,12 +191,12 @@ a {
   .write-form-container {
     margin-bottom: 0px;
   }
-  
+
   .write-form-size {
     width: 500px;
     height: 600px;
   }
-  
+
   .write-form {
     position: absolute;
     margin-top: 96px;
@@ -235,7 +235,7 @@ a {
     font-size: 30px;
     margin-right: 20px;
   }
-  
+
   .date input {
     font-size: 30px;
     width: 150px;
