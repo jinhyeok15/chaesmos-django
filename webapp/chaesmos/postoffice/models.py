@@ -38,6 +38,7 @@ class Solution(TimeStampedModel):
 class DailyPost(models.Model):
     fk_letter = models.ForeignKey(Letter, on_delete=models.CASCADE)
     fk_reader = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='dailyposts')
+
     expired_at = models.DateTimeField()
 
     objects = DailyPostManager()

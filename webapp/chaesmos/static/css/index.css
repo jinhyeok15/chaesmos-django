@@ -38,37 +38,61 @@ img {
   align-items: center;
   font-size: 2vw;
   z-index: 0;
+  margin-top: 80px;
 }
+
 .ml3 {
   font-weight: 900;
-  font-size: 2.5em;
+  font-size: 28px;
   color: aliceblue;
   text-align: center;
-  margin-bottom: 100px;
 }
+
+@media (min-width: 640px) {
+  .ml3 {
+    font-weight: 900;
+    font-size: 2.5em;
+    color: aliceblue;
+    text-align: center;
+  }
+
+  .contents {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    z-index: 0;
+    margin-top: 30px;
+  }
+}
+
 .btns {
-  width: 100%;
-  height: 100px;
+  width: 300px;
   position: fixed;
-  bottom: 50px;
-  display: flex;
-  justify-content: center;
+  bottom: 80px;
   align-items: center;
-  /* margin-top: 200px; */
 }
-.index-link-button {
-  color: black;
-  border-radius: 10px;
-  padding: 15px 50px;
-  margin: 70px;
-  font-size: 30px;
-  letter-spacing: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-  background-color: aliceblue;
-  box-shadow: 0 5px #999;
+
+.btns a {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
 }
+
+@media (min-width: 640px) {
+  .btns {
+    width: 400px;
+    position: fixed;
+    bottom: 80px;
+    align-items: center;
+  }
+
+  .btns a {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+}
+
 .write:active,
 .answer:active {
   box-shadow: 0 5px #666;
@@ -78,12 +102,6 @@ a {
   text-decoration: none;
 }
 @media screen and (max-width: 1300px) {
-  .contents {
-    height: 300px;
-  }
-  .btns {
-    margin-top: 100px;
-  }
   .write,
   .answer {
     font-size: 20px;
@@ -92,24 +110,10 @@ a {
   }
 }
 @media screen and (max-width: 1000px) {
-  .contents {
-    height: 200px;
-  }
-  .btns {
-    margin-top: 50px;
-  }
   .write,
   .answer {
     font-size: 20px;
     padding: 5px 20px;
     margin: 30px;
-  }
-}
-@media screen and (max-width: 700px) {
-  .contents {
-    height: 100px;
-  }
-  .btns {
-    margin-top: 10px;
   }
 }

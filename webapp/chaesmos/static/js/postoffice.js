@@ -33,11 +33,53 @@ const letters = document.getElementsByClassName('letter');
 const letterButtonNext = document.getElementById('letter-button-next');
 const letterButtonBack = document.getElementById('letter-button-back');
 
+const readStyles = document.getElementsByClassName('read-style');
+const writeStyles = document.getElementsByClassName('write-style');
+
 const solutionWriteSubmit = document.getElementById('solution-write-submit');
+
+const letterList = JSON.parse(document.getElementById('letter-list').textContent)['letters'];
 
 const noData = document.getElementById('letter-no-data');
 
+const smLookWrite = document.getElementById('sm-look-write-letter');
+const smLookRead = document.getElementById('sm-look-read-letter');
+
+const revealLetterElements = (elements) => {
+  Array.prototype.forEach.call(elements, e=>{
+    e.classList.remove('hidden');
+    e.classList.add('z-99', 'm-auto');
+  });
+}
+
+const disappearLetterElements = (elements) => {
+  Array.prototype.forEach.call(elements, e=>{
+    e.classList.add('hidden');
+    e.classList.remove('z-99', 'm-auto');
+  });
+}
+
+const responsiveSet = () => {
+  if (window.innerWidth > 1280) {
+    smLookRead.classList.add('hidden');
+    smLookWrite.classList.add('hidden');
+
+    revealLetterElements(readStyles);
+    revealLetterElements(writeStyles);
+  } else {
+    smLookRead.classList.remove('hidden');
+    smLookWrite.classList.add('hidden');
+
+    disappearLetterElements(readStyles);
+    revealLetterElements(writeStyles);
+  }
+}
+
+window.onresize = responsiveSet;
+
 window.onload = ()=>{
+  responsiveSet();
+
   if (letters.length!==0) {
     letters[letterPage-1].classList.remove('hidden');
   }
@@ -51,8 +93,6 @@ window.onload = ()=>{
     letterButtonNext.disabled = true;
   }
 };
-
-const letterList = JSON.parse(document.getElementById('letter-list').textContent)['letters'];
 
 letterButtonBack.addEventListener('click', e=>{
   if (letterPage===letters.length) {
@@ -91,4 +131,21 @@ solutionWriteSubmit.addEventListener('click', e=>{
       if (result.code === 200) window.location.replace('/success');
     })
     .catch(e => console.log(e));
+});
+
+// sm-look-buttons listener
+smLookWrite.addEventListener('click', e=>{
+  smLookWrite.classList.add('hidden');
+  smLookRead.classList.remove('hidden');
+
+  revealLetterElements(writeStyles);
+  disappearLetterElements(readStyles);
+});
+
+smLookRead.addEventListener('click', e=>{
+  smLookRead.classList.add('hidden');
+  smLookWrite.classList.remove('hidden');
+
+  revealLetterElements(readStyles);
+  disappearLetterElements(writeStyles);
 });
