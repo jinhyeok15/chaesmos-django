@@ -1,3 +1,4 @@
 list
     - .env
     - config.js
+    - prod_settings.py
