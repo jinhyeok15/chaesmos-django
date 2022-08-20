@@ -47,7 +47,7 @@
 
 <div style="display: flex; flex-direction: row;" align="center">
   <img src="https://user-images.githubusercontent.com/82345753/185731292-3418499b-4cea-4912-a6c4-de6e6c6db11e.png" width="400" height="250"/>
-  <img src="https://user-images.githubusercontent.com/82345753/185731311-2b7c4b1f-c8bc-42e9-ba75-347d5e444bbb.png" width="300" height="250"/>
+  <img src="https://user-images.githubusercontent.com/82345753/185731311-2b7c4b1f-c8bc-42e9-ba75-347d5e444bbb.png" width="200" height="250"/>
 </div>
 
 2. tailwind css 스타일의 클래스 명 활용
