@@ -13,7 +13,7 @@
 
 ## 프로젝트 소개
 
-![image](https://user-images.githubusercontent.com/82345753/185723375-dc09d972-53c0-4f04-a0d9-833bf969b9a6.png | width=400 | height=300)
+![image](https://user-images.githubusercontent.com/82345753/185723375-dc09d972-53c0-4f04-a0d9-833bf969b9a6.png =400)
 
 ![image](https://user-images.githubusercontent.com/82345753/185723416-6c4a7021-51db-49c3-8b17-06880d8aaa8d.png)
 
