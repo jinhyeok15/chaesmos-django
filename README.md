@@ -21,7 +21,9 @@
 
 ## 비즈니스 로직 Flow chart
 
-<img src="https://user-images.githubusercontent.com/82345753/185723946-70bb3764-a457-413d-8d45-eef1f48eeda8.png" width="400" height="250" align="center"/>
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/82345753/185723946-70bb3764-a457-413d-8d45-eef1f48eeda8.png" width="400" height="250"/>
+</div>
 
 ## ERD
 
