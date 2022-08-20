@@ -13,12 +13,11 @@
 
 ## 프로젝트 소개
 
-<img src="https://user-images.githubusercontent.com/82345753/185723375-dc09d972-53c0-4f04-a0d9-833bf969b9a6.png" width="400" height="300"/>
-<!-- ![image](https://user-images.githubusercontent.com/82345753/185723375-dc09d972-53c0-4f04-a0d9-833bf969b9a6.png =400) -->
-
-![image](https://user-images.githubusercontent.com/82345753/185723416-6c4a7021-51db-49c3-8b17-06880d8aaa8d.png)
-
-![image](https://user-images.githubusercontent.com/82345753/185723738-cb22474f-09ea-435e-ad86-3c68cc71674f.png)
+<div style="display: flex; flex-direction: row;">
+  <img src="https://user-images.githubusercontent.com/82345753/185723375-dc09d972-53c0-4f04-a0d9-833bf969b9a6.png" width="380" height="300"/>
+  <img src="https://user-images.githubusercontent.com/82345753/185723416-6c4a7021-51db-49c3-8b17-06880d8aaa8d.png" width="380" height="300"/>
+  <img src="https://user-images.githubusercontent.com/82345753/185723738-cb22474f-09ea-435e-ad86-3c68cc71674f.png" width="380" height="300"/>
+</div>
 
 ## 비즈니스 로직 Flow chart
 
