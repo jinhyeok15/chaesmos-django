@@ -13,7 +13,7 @@
 
 ## 프로젝트 소개
 
-<div style="display: flex; flex-direction: row; justify-content: center">
+<div style="display: flex; flex-direction: row; align-items: center">
   <img src="https://user-images.githubusercontent.com/82345753/185723375-dc09d972-53c0-4f04-a0d9-833bf969b9a6.png" width="300" height="250"/>
   <img src="https://user-images.githubusercontent.com/82345753/185723416-6c4a7021-51db-49c3-8b17-06880d8aaa8d.png" width="300" height="250"/>
   <img src="https://user-images.githubusercontent.com/82345753/185723738-cb22474f-09ea-435e-ad86-3c68cc71674f.png" width="300" height="250"/>
