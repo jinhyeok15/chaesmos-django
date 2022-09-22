@@ -20,7 +20,8 @@ class UserLogout(GenericMixin, APIView):
 
         session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
         try:
-            UserSession.objects.get(pk=session_id).delete()
+            session = UserSession.objects.get(pk=session_id)
+            session.delete()
 
             return Response(None, HttpStatus(200))
         except UserSession.DoesNotExist:

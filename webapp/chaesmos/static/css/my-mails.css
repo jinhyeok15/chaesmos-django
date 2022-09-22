@@ -27,7 +27,23 @@
   height: 250px;
 }
 
+.mail:hover {
+  width: 320px;
+  height: 260px;
+}
+
+.mail img {
+  width: 100%;
+  height: 100%;
+}
+
 .mail-info {
   position: relative;
   bottom: 150px;
+}
+
+.mail-button {
+  background: transparent;
+  cursor: pointer;
+  border: none;
 }
