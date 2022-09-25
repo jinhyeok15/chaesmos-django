@@ -3,14 +3,14 @@
 {% load static %}
 
 {% block style %}
-<link href="{% static 'css/my-mails.css' %}" rel="stylesheet">
+<link href="{% static 'css/my-mail.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <main>
   <div class="mails">
     {% for letter in letters %}
-    <button class="mail-button" id="mail-button">
+    <a href="{% url 'page-read-letter' letter.pk %}" class="mail-button">
       <div class="mail">
         <img src="{% static 'img/mail.png' %}" alt="">
         <div class="mail-info">
@@ -18,7 +18,7 @@
           <div class="mt-24 text-2xl text-white-base"><p>제목: {{ letter.title }}</p></div>
         </div>
       </div>
-    </button>
+    </a>
     {% endfor %}
   </div>
   <img src="{% static 'img/background.jpg' %}" alt="background" class="background-img">
@@ -27,5 +27,4 @@
 
 {% block script %}
 <script type="module" src="{% static 'js/my-mail.js' %}"></script>
-{{ letter_data | json_script:"letter-data" }}
 {% endblock %}
