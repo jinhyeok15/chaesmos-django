@@ -25,7 +25,7 @@ from commons.views.mixin import GenericMixin
 
 class SolutionView(APIView, GenericMixin):
     def post(self, request):
-        session_id = request.COOKIES.get(USER_SESSION_COOKIE_KEY)
+        session_id = request.data.get(USER_SESSION_COOKIE_KEY)
 
         if session_id is None:
             return Response(None, HttpStatus(401))
