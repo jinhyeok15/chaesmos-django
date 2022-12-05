@@ -10,7 +10,7 @@
   <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   {% block style %}{% endblock style %}
-  <link rel="stylesheet" href="{% static 'css/base-style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <title>신비한 우체국</title>
 </head>
 
@@ -25,7 +25,7 @@
     {% else %}
     <div>
       <a href="{% url 'page-read-letters' %}" class="nav-right">내 메일함</a>
-      <a href="{% url 'page-logout' %}" class="logout-btn">
+      <a href="{% url 'page-logout' %}" class="logout-btn nav-right">
         <span class="nav-right">로그아웃</span>
       </a>
     </div>
