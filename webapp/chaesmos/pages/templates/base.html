@@ -25,15 +25,14 @@
     {% else %}
     <div>
       <a href="{% url 'page-read-letters' %}" class="nav-right">내 메일함</a>
-      <button id="logout-nav-button" class="logout-btn">
+      <a href="{% url 'page-logout' %}" class="logout-btn">
         <span class="nav-right">로그아웃</span>
-      </button>
+      </a>
     </div>
     {% endif %}
   </nav>
 
   {% block content %}{% endblock content %}
-  <script type="module" src="{% static 'js/main.js' %}"></script>
   <script>
     document.addEventListener( 'DOMContentLoaded', () => {
       new TypeIt( '.logo' )
@@ -41,8 +40,8 @@
         .go();
 
     } );
-    const textWrapper = document.querySelector( '.ml3' );
-    textWrapper.innerHTML = textWrapper.textContent.replace( /\S/g, "<span class='letter'>$&</span>" );
+    // const textWrapper = document.querySelector( '.ml3' );
+    // textWrapper.innerHTML = textWrapper.textContent.replace( /\S/g, "<span class='letter'>$&</span>" );
 
     anime.timeline( { loop: true } )
       .add( {

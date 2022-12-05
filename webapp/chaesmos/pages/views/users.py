@@ -13,6 +13,9 @@ from django.core.exceptions import ValidationError
 # cookie
 from commons.cookies import USER_SESSION_COOKIE_KEY
 
+# decorators
+from commons.views.decorators import authorize
+
 # view names
 from commons.views import (
     INDEX_VIEW_NAME,
@@ -63,7 +66,14 @@ def login(request):
     })
 
 
-def logout(request):
+@authorize
+def logout(request, context):
+    session = context['session']
+    if session:
+        session.delete()
+    else:
+        return ValidationError('session이 존재하지 않습니다.')
+
     http = redirect(INDEX_VIEW_NAME)
     http.delete_cookie(USER_SESSION_COOKIE_KEY)
 

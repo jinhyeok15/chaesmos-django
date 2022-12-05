@@ -1,0 +1,1 @@
+export const SESSION_ID_COOKIE = 'user_session_id';
