@@ -16,7 +16,7 @@
 
 <body>
   <nav>
-    <a href="{% url 'page-index' %}" class="nav-logo">신비한 우체국</a>
+    <a href="{% url 'page-index' %}" class="nav-logo" id="nav-logo">신비한 우체국</a>
     {% if not is_logined %}
     <div>
       <a href="{% url 'page-login' %}" class="nav-right">로그인</a>

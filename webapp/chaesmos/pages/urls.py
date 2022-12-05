@@ -9,7 +9,8 @@ from commons.views import (
     WRITE_VIEW_NAME,
     SOLVE_VIEW_NAME,
     SUCCESS_VIEW_NAME,
-    READ_LETTERS_VIEW_NAME
+    READ_LETTERS_VIEW_NAME,
+    READ_LETTER_VIEW_NAME
 )
 
 
@@ -22,4 +23,5 @@ urlpatterns = [
     path('postoffice/write/', views.write, name=WRITE_VIEW_NAME),
     path('postoffice/solve/', views.solve, name=SOLVE_VIEW_NAME),
     path('mymails/', views.read_letters, name=READ_LETTERS_VIEW_NAME),
+    path('mymails/<int:pk>/', views.read_letter, name=READ_LETTER_VIEW_NAME),
 ]

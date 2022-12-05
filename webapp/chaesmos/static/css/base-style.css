@@ -213,12 +213,14 @@ nav {
 }
 
 .nav-logo {
-  display: none;
+  color: aliceblue;
+  font-size: 32px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 @media (min-width: 640px) {
   .nav-logo {
-    display: block;
     color: aliceblue;
     font-size: 48px;
     font-weight: bold;
