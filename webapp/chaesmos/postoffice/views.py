@@ -1,8 +1,6 @@
-from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 
 # models
-from users.models import UserSession
 from postoffice.models import Solution, Letter, DailyPost
 
 from django.db import transaction
@@ -15,7 +13,6 @@ from commons.views.response import (
     GenericResponse as Response,
     HttpStatus
 )
-from commons.cookies import USER_SESSION_COOKIE_KEY
 
 # mixins
 from commons.views.mixin import GenericMixin
