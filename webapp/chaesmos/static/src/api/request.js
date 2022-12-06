@@ -1,5 +1,5 @@
 import { POST, PUT, GET } from './http.js';
-import { HOST } from '../config.js';
+import { HOST } from './config.js';
 
 // requests
 

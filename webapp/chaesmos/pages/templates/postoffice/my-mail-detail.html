@@ -3,15 +3,18 @@
 {% load static %}
 
 {% block style %}
-<link href="{% static 'css/my-mail.css' %}" rel="stylesheet">
+<link href="{% static 'src/styles/my-mail-detail.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <main>
-  <img src="{% static 'img/background.jpg' %}" alt="background" class="background-img">
+  <img src="{% static 'images/background.jpg' %}" alt="background" class="background-img">
+  <div id="box1" class="container">
+    <div class="container"></div>
+  </div>
 </main>
 {% endblock %}
 
 {% block script %}
-<script type="module" src="{% static 'js/my-mail.js' %}"></script>
+<script type="module" src="{% static 'src/app/my-mail.js' %}"></script>
 {% endblock %}

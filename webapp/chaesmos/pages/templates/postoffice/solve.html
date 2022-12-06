@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style %}
-<link href="{% static 'css/solve.css' %}" rel="stylesheet">
+<link href="{% static 'src/styles/solve.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -11,10 +11,10 @@
     <div class="background-wrapper z-50" id="postoffice-background-wrapper"></div>
     <div class="flex flex-row sol-paper-container">
       <div class="sol-paper-left read-style">
-        <img class="w-full size-paper" src="{% static 'img/paper.png' %}" alt="solution-letter">
+        <img class="w-full size-paper" src="{% static 'images/paper.png' %}" alt="solution-letter">
       </div>
       <div class="sol-paper-right write-style">
-        <img class="w-full size-paper" src="{% static 'img/paper.png' %}" alt="solution-letter">
+        <img class="w-full size-paper" src="{% static 'images/paper.png' %}" alt="solution-letter">
       </div>
     </div>
     <div class="flex flex-row sol-paper-container">
@@ -56,15 +56,15 @@
       <h3 class="py-2">우체통을 눌러 편지지를 확인해보세요.</h3>
     </div>
     <div class="flex flex-col items-center postoffice-mailbox z-10" id="postoffice-mailbox">
-      <img src="{% static 'img/post.png' %}" alt="post">
+      <img src="{% static 'images/post.png' %}" alt="post">
       <button type="button" id="postoffice-mailbox-button"></button>
     </div>
   </div>
-  <img src="{% static 'img/solve-background.png' %}" alt="background" class="background-img">
+  <img src="{% static 'images/solve-background.png' %}" alt="background" class="background-img">
 </main>
 {% endblock %}
 
 {% block script %}
-<script type="module" src="{% static 'js/postoffice.js' %}"></script>
+<script type="module" src="{% static 'src/app/postoffice.js' %}"></script>
 {{ letter_list | json_script:"letter-list" }}
 {% endblock %}
