@@ -15,7 +15,7 @@ body {
   height: 100%;
 }
 body {
-  background-image: url(../images/index_bg.png);
+  background-image: url(../../images/index_bg.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
