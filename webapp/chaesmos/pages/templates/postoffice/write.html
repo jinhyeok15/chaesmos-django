@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style %}
-<link href="{% static 'css/write.css' %}" rel="stylesheet">
+<link href="{% static 'src/styles/write.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
 </session>
 <session class="h-screen">
   <div class="flex justify-center w-full write-form-container">
-    <img src="{% static 'img/paper.png' %}" alt="" class="write-form-size">
+    <img src="{% static 'images/paper.png' %}" alt="" class="write-form-size">
     <form method="POST" class="reveal write-form-size write-form"> {% csrf_token %}
       <div class="container">
         {{ form.title }}

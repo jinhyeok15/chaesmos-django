@@ -1,4 +1,6 @@
-import { requestWriteSolution } from "./api/request.js";
+import { createSolution } from "./api/request.js";
+import { getCookie } from "./cookies.js";
+import { SESSION_ID_COOKIE } from "./constants.js";
 
 // postoffice
 const postofficeBackgroundWrapper = document.getElementById('postoffice-background-wrapper');
@@ -123,10 +125,11 @@ solutionWriteSubmit.addEventListener('click', e=>{
 
   const data = {
     letter: letterList[letterPage-1].id,
-    main: document.getElementById('write-letter-text').value
+    main: document.getElementById('write-letter-text').value,
+    [SESSION_ID_COOKIE]: getCookie(SESSION_ID_COOKIE)
   }
 
-  requestWriteSolution(data)
+  createSolution(data)
     .then(result => {
       if (result.code === 200) window.location.replace('/success');
     })

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link href="{% static 'src/styles/my-mail-detail.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main>
+  <img src="{% static 'images/background.jpg' %}" alt="background" class="background-img">
+  <div id="letter" class="letter-wrapper pb-4">
+    <div class="letter-container">
+      <h1 class="letter-title text-5xl">{{ letter.title }}</h1>
+      <div class="letter-main text-3xl overflow-auto">
+        {{ letter.main }}
+      </div>
+      <div class="flex justify-end letter-date px-4">
+        <span>{{ letter.selected_date }}</span>
+      </div>
+    </div>
+    <div class="letter-background-img">
+      <img class="w-full h-full" src="{% static 'images/paper.png' %}" alt="images/paper.png">
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script type="module" src="{% static 'src/app/my-mail.js' %}"></script>
+{% endblock %}

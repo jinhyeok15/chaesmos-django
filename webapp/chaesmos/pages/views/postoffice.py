@@ -11,7 +11,13 @@ from postoffice.forms import LetterCreateForm
 from postoffice.serializers import LetterListSerializer
 
 # commons
-from commons.views import SUCCESS_VIEW_NAME, WRITE_VIEW_NAME, SOLVE_VIEW_NAME, READ_LETTERS_VIEW_NAME
+from commons.views import (
+    SUCCESS_VIEW_NAME, 
+    WRITE_VIEW_NAME, 
+    SOLVE_VIEW_NAME, 
+    READ_LETTERS_VIEW_NAME,
+    READ_LETTER_VIEW_NAME
+)
 from commons.views.decorators import authorize
 
 # utils
@@ -72,5 +78,18 @@ def read_letters(request, context):
     letters = Letter.objects.filter(fk_writer=user)
 
     context['letters'] = letters
+    context['detail'] = False
 
     return render(request, 'postoffice/my-mails.html', context=context)
+
+
+@authorize
+def read_letter(request, context, pk):
+    context['view_name'] = READ_LETTER_VIEW_NAME
+
+    obj = Letter.objects.get(pk=pk)
+
+    context['letter'] = obj
+    context['detail'] = True
+
+    return render(request, 'postoffice/my-mail-detail.html', context=context)

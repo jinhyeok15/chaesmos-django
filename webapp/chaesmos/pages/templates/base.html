@@ -10,13 +10,13 @@
   <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   {% block style %}{% endblock style %}
-  <link rel="stylesheet" href="{% static 'css/base-style.css' %}">
+  <link rel="stylesheet" href="{% static 'src/styles/base.css' %}">
   <title>신비한 우체국</title>
 </head>
 
 <body>
   <nav>
-    <a href="{% url 'page-index' %}" class="nav-logo">신비한 우체국</a>
+    <a href="{% url 'page-index' %}" class="nav-logo" id="nav-logo">신비한 우체국</a>
     {% if not is_logined %}
     <div>
       <a href="{% url 'page-login' %}" class="nav-right">로그인</a>
@@ -25,15 +25,14 @@
     {% else %}
     <div>
       <a href="{% url 'page-read-letters' %}" class="nav-right">내 메일함</a>
-      <button id="logout-nav-button" class="logout-btn">
+      <a href="{% url 'page-logout' %}" class="logout-btn nav-right">
         <span class="nav-right">로그아웃</span>
-      </button>
+      </a>
     </div>
     {% endif %}
   </nav>
 
   {% block content %}{% endblock content %}
-  <script type="module" src="{% static 'js/main.js' %}"></script>
   <script>
     document.addEventListener( 'DOMContentLoaded', () => {
       new TypeIt( '.logo' )
