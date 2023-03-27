@@ -4,7 +4,7 @@
 
 2022.7.4~2022.8.20
 
-[사이트 바로가기](http://jinhyeok15.pythonanywhere.com)
+[사이트 바로가기](https://jinhyeok15.pythonanywhere.com)
 
 ## 팀
 
